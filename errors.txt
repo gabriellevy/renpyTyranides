@@ -2,9 +2,10 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 1537: u'xsize' is not a keyword argument or valid child for the screen statement.
-    xsize 250
-         ^
+File "game/script.rpy", line 21: expected an indented block
+    niveauReperage = niveauReperage + val
+                  ^
+    
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Sun Sep 27 16:47:07 2020
+Sun Sep 27 20:52:34 2020

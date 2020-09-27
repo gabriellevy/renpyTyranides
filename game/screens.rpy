@@ -1534,23 +1534,24 @@ style slider_pref_slider:
 # mes écrans perso
 screen genovore():
     tag interface_personnage
-
     frame:
-        xpos 10 ypos 10
-        xsize 250
-        vbox:
+        xpos 5 ypos 5
+        grid 2 3:
+            xsize 210
+            spacing 5
             text _("[sante]")
-            text _("Faim :")
+            null
+            text _("Faim ([niveauFaim]/10)")
             bar:
-                value StaticValue(niveauFaim, 10)
-            text _("Repéré : ")
+                value AnimatedValue(niveauFaim, 10, 1.0)
+            text _("Repéré ([niveauReperage]/[reperageMax])")
             bar:
-                value StaticValue(niveauReperage, 100)
+                value AnimatedValue(niveauReperage, 100, 1.0)
 
 screen invasion_planetaire():
     tag interface_personnage
 
     frame:
-        xpos 10 ypos 10
+        xpos 5 ypos 5
         vbox:
             text _("INVASION PLANETAIRE")
