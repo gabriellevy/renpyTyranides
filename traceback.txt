@@ -1,0 +1,73 @@
+﻿I'm sorry, but an uncaught exception occurred.
+
+While running game code:
+  File "game/script.rpy", line 47, in script
+    g "** À vos ordres maître."
+  File "game/screens.rpy", line 1535, in execute
+    screen genovore():
+  File "game/screens.rpy", line 1535, in execute
+    screen genovore():
+  File "game/screens.rpy", line 1538, in execute
+    frame:
+  File "game/screens.rpy", line 1541, in execute
+    vbox:
+  File "game/screens.rpy", line 1547, in execute
+    bar:
+  File "game/screens.rpy", line 1547, in keywords
+    bar:
+NameError: name 'niveauReperage' is not defined
+
+-- Full Traceback ------------------------------------------------------------
+
+Full traceback:
+  File "game/script.rpy", line 47, in script
+    g "** À vos ordres maître."
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\ast.py", line 708, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\exports.py", line 1345, in say
+    who(what, *args, **kwargs)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\character.py", line 1142, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, **display_args)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\character.py", line 842, in do_display
+    **display_args)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\character.py", line 591, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\ui.py", line 297, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\display\core.py", line 2702, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\display\core.py", line 3094, in interact_core
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\display\core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\display\core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\display\core.py", line 541, in visit_all
+    d.visit_all(callback, seen)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\display\screen.py", line 430, in visit_all
+    callback(self)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\display\core.py", line 3094, in <lambda>
+    root_widget.visit_all(lambda i : i.per_interact())
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\display\screen.py", line 440, in per_interact
+    self.update()
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\display\screen.py", line 625, in update
+    self.screen.function(**self.scope)
+  File "game/screens.rpy", line 1535, in execute
+    screen genovore():
+  File "game/screens.rpy", line 1535, in execute
+    screen genovore():
+  File "game/screens.rpy", line 1538, in execute
+    frame:
+  File "game/screens.rpy", line 1541, in execute
+    vbox:
+  File "game/screens.rpy", line 1547, in execute
+    bar:
+  File "game/screens.rpy", line 1547, in keywords
+    bar:
+  File "<screen language>", line 1548, in <module>
+NameError: name 'niveauReperage' is not defined
+
+Windows-8-6.2.9200
+Ren'Py 7.3.5.606
+Tyranides 1.0
+Sun Sep 27 16:55:48 2020
