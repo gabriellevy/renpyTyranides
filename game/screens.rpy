@@ -1532,6 +1532,44 @@ style slider_pref_slider:
     xsize 600
 
 # mes écrans perso
+# Ajouter une boîte pour l'investissement dans les différentes compétences de la flotte ruche
+# (coûte de la biomasse et implique des effets d'invasion différents)
+# - Infestation génovore
+# - troupes de combat classique (des termagants aux carnifex)
+# - flotte de combat spatial
+# - Biotitans (0 de base, investir baucoup garantit une victoire au sol)
+# - traqueurs et digéreurs (inclut les modificateurs de climat) => facilite la répidité de digestion, évite els renforts et els évacuations
+# - adptabilité : permet de garder des réserves pour les cas imprévus, de réinvestir...
+screen preparer_flotte():
+    default localInvestInfestation = 4
+    tag interface_personnage
+    frame:
+        xalign .5 yalign .5
+        grid 2 7:
+            xsize 300
+            spacing 5
+            text _("Infestation Génovore ([investInfestation])")
+            bar:
+                value VariableValue("investInfestation", 10) style "slider"
+            text _("Troupes ([investTroupes])")
+            bar:
+                value VariableValue("investTroupes", 10) style "slider"
+            text _("Flotte de combat spatial ([investFlotte])")
+            bar:
+                value VariableValue("investFlotte", 10) style "slider"
+            text _("Biotitans ([investBiotitan])")
+            bar:
+                value VariableValue("investBiotitan", 10) style "slider"
+            text _("Traqueurs digéreurs ([investDigestion])")
+            bar:
+                value VariableValue("investDigestion", 10) style "slider"
+            text _("Adaptabilité ([investAdaptabilite])")
+            bar:
+                value VariableValue("investAdaptabilite", 10) style "slider"
+            textbutton "Valider":
+                action Notify("Validation")
+            null
+
 screen genovore():
     tag interface_personnage
     frame:
