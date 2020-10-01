@@ -1560,9 +1560,9 @@ screen preparer_flotte():
             text _("Biotitans ([investBiotitan])")
             bar:
                 value VariableValue("investBiotitan", 10) style "slider"
-            text _("Traqueurs digéreurs ([investDigestion])")
+            text _("Tyranisation ([investTyranisation])")
             bar:
-                value VariableValue("investDigestion", 10) style "slider"
+                value VariableValue("investTyranisation", 10) style "slider"
             text _("Adaptabilité ([investAdaptabilite])")
             bar:
                 value VariableValue("investAdaptabilite", 10) style "slider"
