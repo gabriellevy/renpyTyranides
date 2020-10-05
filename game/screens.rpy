@@ -1546,28 +1546,28 @@ screen preparer_flotte():
     frame:
         xalign .5 yalign .5
         grid 2 7:
-            xsize 300
+            xsize 350
             spacing 5
             text _("Infestation Génovore ([investInfestation])")
             bar:
-                value VariableValue("investInfestation", 10) style "slider"
+                value VariableValue("investInfestation", 10, action=rafraichirInvestissement) style "slider"
             text _("Troupes ([investTroupes])")
             bar:
-                value VariableValue("investTroupes", 10) style "slider"
+                value VariableValue("investTroupes", 10, action=rafraichirInvestissement) style "slider"
             text _("Flotte de combat spatial ([investFlotte])")
             bar:
-                value VariableValue("investFlotte", 10) style "slider"
+                value VariableValue("investFlotte", 10, action=rafraichirInvestissement) style "slider"
             text _("Biotitans ([investBiotitan])")
             bar:
-                value VariableValue("investBiotitan", 10) style "slider"
+                value VariableValue("investBiotitan", 10, action=rafraichirInvestissement) style "slider"
             text _("Tyranisation ([investTyranisation])")
             bar:
-                value VariableValue("investTyranisation", 10) style "slider"
+                value VariableValue("investTyranisation", 10, action=rafraichirInvestissement) style "slider"
             text _("Adaptabilité ([investAdaptabilite])")
             bar:
-                value VariableValue("investAdaptabilite", 10) style "slider"
+                value VariableValue("investAdaptabilite", 30, action=rafraichirInvestissement) style "slider"
             textbutton "Valider":
-                action Notify("Validation")
+                action [rafraichirInvestissement, Hide("preparer_flotte"), Jump("genovore")]
             null
 
 screen genovore():

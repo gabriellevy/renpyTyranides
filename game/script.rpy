@@ -18,13 +18,13 @@ label start:
         niveauReperage = 0
         reperageMax = 100
 
+        investTotal = 25
         investInfestation = 5
         investTroupes = 5
         investFlotte = 5
         investBiotitan = 0
         investTyranisation = 5
         investAdaptabilite = 5
-        investReserve = 5
 
         def ajouteReperage(val):
             global niveauReperage, reperageMax
@@ -35,13 +35,37 @@ label start:
         def genovoreMange():
             niveauFaim = 0
 
+        def rafraichirInvestissement():
+            global investTotal, investInfestation, investTroupes, investFlotte, investBiotitan, investTyranisation, investAdaptabilite
+
+            total = investInfestation + investTroupes + investFlotte + investTyranisation + investAdaptabilite + investBiotitan
+
+            while ( total > investTotal):
+                if ( investAdaptabilite > 0 ):
+                    investAdaptabilite = investAdaptabilite - 1
+                else:
+                    investInfestation = investInfestation -1
+                    investTroupes = investTroupes - 1
+                    investFlotte = investFlotte - 1
+                    investTyranisation = investTyranisation - 1
+                    investBiotitan = investBiotitan - 1
+
+                total = investInfestation + investTroupes + investFlotte + investTyranisation + investAdaptabilite + investBiotitan
+
+            if ( investTotal > total ):
+                investAdaptabilite = investAdaptabilite + (investTotal - total)
+
+
     scene bg galaxie
     with Dissolve(.5)
     show prince flingue at left
-    # p "L'esprit de la ruche a faim. Il veut cette galaxie toute entière."
-    # p "Bien que sa puissance télépathique soit incomparable il ne peut pas contrôler toutes ses créatures sur des millions d'années lumières d'étendues."
-    # p "Vous, comme moi, êtes une extension de son esprit. Vous êtes destiné à le servir en conquérant et dévorant la planète qu'il vous assignera dans un secteur particulier."
-    # p "Il vous a assigné la planète industrielle Extremis. C'est un grand honneur car c'est un monde puissant et précieux pour les misérables humains de l'Imperium. De lui dépendent plusieurs planètes secondaires que vous pourrez aussi dévorer."
+
+    # jump test_temp
+
+    p "L'esprit de la ruche a faim. Il veut cette galaxie toute entière."
+    p "Bien que sa puissance télépathique soit incomparable il ne peut pas contrôler toutes ses créatures sur des millions d'années lumières d'étendues."
+    p "Vous, comme moi, êtes une extension de son esprit. Vous êtes destiné à le servir en conquérant et dévorant la planète qu'il vous assignera dans un secteur particulier."
+    p "Il vous a assigné la planète industrielle Extremis. C'est un grand honneur car c'est un monde puissant et précieux pour les misérables humains de l'Imperium. De lui dépendent plusieurs planètes secondaires que vous pourrez aussi dévorer."
 
     # Ajouter une boîte pour l'investissement dans les différentes compétences de la flotte ruche
     # (coûte de la biomasse et implique des effets d'invasion différents)
@@ -51,19 +75,24 @@ label start:
     # - tyranisation, traqueurs et digéreurs (inclut les modificateurs de climat) => facilite la répidité de digestion, évite els renforts et els évacuations
     # - troupes de combat classique (des termagants aux carnifex)
     # - adptabilité : permet de garder des réserves pour les cas imprévus, de réinvestir...
+
+# label test_temp:
     show screen preparer_flotte
+label texte_investissement:
+    # la fonction de maj ci dessus ne marche pas.... à voir plus tard j'espère quand j'aurai des exemples de bar appelant du python
     p "Investir en infestation génovore rendra plus efficace l'envoi de génovore dans le système visé pour infiltrer la planète et en prendre le contrôle avant même que notre flotte soit arrivée."
-    p "À l'heure où nous parlons un vaisseau de l'Imperium contenant des génovores est sur le point de s'écraser sur cette planète."
+    p "À l'heure où nous parlons un vaisseau de l'Imperium contenant des génovores est sur le point de se poser sur cette planète."
     p "Les génovores sont le meilleur moyen d'infester et affaiblir Extremis."
     p "De plus ils serviront de relais pour nous aider à trouver cette planète que nous ne connaissons que par des informations éparses récoltées dans les cerveaux de récentes victimes."
+    p "Les troupes sont indispensables pour prendre la planète, surtout si les génovores n'ont pas réussi à en prendre le contrôle avant votre arrivée."
+    p "Investir dans la flotte est presque indispensable. Si nous perdions la guerre spatiale il serait très difficile d'atteindre la planète."
     p "Les biotitans sont des monstres gigantesques qui, si nous les déployons, nous assurerons la victoire lors des combats au sol."
-    p "Investir dans la flotte est presque indispensable. Si nous perdions la guerre spatiale il devrait très difficile d'atteindre la planète."
     p "Quand nous atteindrons la planète nous y larguerons des milliards de spores et de créatures qui modifieront son environnement pour la rend plus simple à attaquer et digérer tout en rendant la vie impossible aux humains."
     p "Investir en tyranisation rendra cette phase plus efficace."
     p "Elle permettra aussi d'accélérer le processus de conquête et de digestion pour le finir avant l'arrivée de renforts ennemis."
-    p "Garder une réserve en adaptabilité permettra de réagir plus efficacement aux situations de crise."
-
-
+    p "Garder une réserve permettra de réagir plus efficacement aux situations de crise."
+    p "Réglez les glisseurs pour déterminer votre investissement en biomasse dans chacune de ces caractéristiques puis validez."
+    jump texte_investissement
 
 # ------> arrivée sur la planète, passage en tant que simple génovore
 label genovore:
@@ -122,6 +151,8 @@ label invasion:
     # vague aérienne préventive possible : https://omnis-bibliotheca.com/index.php/Essaims_Volants_Tyranides
     # passage riglo avec es hormagaunts : https://omnis-bibliotheca.com/index.php/Gaunts :
     # En outre, à la différence des autres créatures tyranides, les Hormagaunts sont capables de se reproduire de manière autonome, et pondent des centaines d’œufs dans le sol d’une planète avant que leur brève vie ne touche à son terme. Sitôt qu’une vague de ces créatures a été éliminée, un nouvel essaim a atteint sa maturité et se tient prêt à poursuivre les ravages de la génération précédente.
+    # technique par pollution de planète qui rend les renforts inutiles car planète vite perdue pour l'Imperium : https://omnis-bibliotheca.com/index.php/Disperseurs_de_Spores
+
 
     scene bg invasion_planetaire
     with Dissolve(.5)
@@ -147,7 +178,8 @@ label guerre_au_sol:
     # dans les cas de retranchements difficiles à abattre (et de traque) scène sur les fouisseurs : https://omnis-bibliotheca.com/index.php/Essaims_Souterrains_Tyranides
     # éventuellement utilisation de bio titans (si investi) : https://omnis-bibliotheca.com/index.php/Biotitans_Tyranides
     # Situation de perte de créatures synapses ? https://omnis-bibliotheca.com/index.php/Cr%C3%A9atures_Synapses_Tyranides
-        # tyranoformation : https://omnis-bibliotheca.com/index.php/Spores_Tyranides
+    # tyranoformation : https://omnis-bibliotheca.com/index.php/Spores_Tyranides
+    # artillerie : https://omnis-bibliotheca.com/index.php/Organismes_Artilleurs_Tyranides
     scene bg combat_au_sol
     with Dissolve(.5)
     "La végétation même avait acquis une vitalité extraordinaire depuis l’invasion, et seul un déboisement quasi-constant empêchait des lianes chargées de spores ennemies de recouvrir l’îlot de roc. "

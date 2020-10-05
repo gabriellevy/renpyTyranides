@@ -1,38 +1,46 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00start.rpy", line 212, in script call
-    call _load_reload_game from _call__load_reload_game_1
-  File "renpy/common/00keymap.rpy", line 456, in script
-    python hide:
-  File "renpy/common/00keymap.rpy", line 456, in <module>
-    python hide:
-  File "renpy/common/00keymap.rpy", line 466, in _execute_python_hide
-    renpy.load("_reload-2")
-AttributeError: 'StoreModule' object has no attribute 'genovoreMange'
+  File "game/script.rpy", line 82, in script
+    p "Investir en infestation génovore rendra plus efficace l'envoi de génovore dans le système visé pour infiltrer la planète et en prendre le contrôle avant même que notre flotte soit arrivée."
+TypeError: unbound method get_tooltip() must be called with Hide instance as first argument (got nothing instead)
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/00start.rpy", line 212, in script call
-    call _load_reload_game from _call__load_reload_game_1
-  File "renpy/common/00keymap.rpy", line 456, in script
-    python hide:
-  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\ast.py", line 914, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\python.py", line 2028, in py_exec_bytecode
-    exec bytecode in globals, locals
-  File "renpy/common/00keymap.rpy", line 456, in <module>
-    python hide:
-  File "renpy/common/00keymap.rpy", line 466, in _execute_python_hide
-    renpy.load("_reload-2")
-  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\loadsave.py", line 769, in load
-    roots, log = loads(location.load(filename))
-  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\loadsave.py", line 63, in loads
-    return cPickle.loads(s)
-AttributeError: 'StoreModule' object has no attribute 'genovoreMange'
+  File "game/script.rpy", line 82, in script
+    p "Investir en infestation génovore rendra plus efficace l'envoi de génovore dans le système visé pour infiltrer la planète et en prendre le contrôle avant même que notre flotte soit arrivée."
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\ast.py", line 708, in execute
+    renpy.exports.say(who, what, *args, **kwargs)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\exports.py", line 1345, in say
+    who(what, *args, **kwargs)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\character.py", line 1142, in __call__
+    self.do_display(who, what, cb_args=self.cb_args, **display_args)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\character.py", line 842, in do_display
+    **display_args)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\character.py", line 591, in display_say
+    rv = renpy.ui.interact(mouse='say', type=type, roll_forward=roll_forward)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\ui.py", line 297, in interact
+    rv = renpy.game.interface.interact(roll_forward=roll_forward, **kwargs)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\display\core.py", line 2702, in interact
+    repeat, rv = self.interact_core(preloads=preloads, trans_pause=trans_pause, **kwargs)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\display\core.py", line 3515, in interact_core
+    rv = renpy.display.focus.mouse_handler(ev, x, y)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\display\focus.py", line 407, in mouse_handler
+    return change_focus(new_focus, default=default)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\display\focus.py", line 362, in change_focus
+    set_focused(current, newfocus.arg, newfocus.screen)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\display\focus.py", line 109, in set_focused
+    new_tooltip = widget._get_tooltip()
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\display\behavior.py", line 749, in _get_tooltip
+    return get_tooltip(self.action)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\display\behavior.py", line 363, in get_tooltip
+    rv = get_tooltip(i)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\display\behavior.py", line 373, in get_tooltip
+    return func()
+TypeError: unbound method get_tooltip() must be called with Hide instance as first argument (got nothing instead)
 
 Windows-8-6.2.9200
 Ren'Py 7.3.5.606
 Tyranides 1.0
-Wed Sep 30 22:27:16 2020
+Mon Oct 05 22:25:08 2020
