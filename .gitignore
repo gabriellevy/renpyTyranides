@@ -3,3 +3,7 @@ game/screens.rpyc
 game/screens.rpyc
 game/screens.rpyc
 *.rpyc
+game/cache/bytecode.rpyb
+game/cache/bytecode.rpyb
+game/cache/screens.rpyb
+*.rpyc

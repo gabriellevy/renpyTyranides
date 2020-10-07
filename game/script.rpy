@@ -8,6 +8,7 @@
 define p = Character('Prince', color="#91160f")
 define g = Character('Genovore', color="#3f0f5d")
 define pg = Character('Patriarche génovore', color="#3f0f5d")
+define hp = Character('Pilote', color="#251f99")
 
 # -------> Explication du prince, galaxie
 label start:
@@ -60,7 +61,7 @@ label start:
     with Dissolve(.5)
     show prince flingue at left
 
-    # jump test_temp
+    jump genovore # temp
 
     p "L'esprit de la ruche a faim. Il veut cette galaxie toute entière."
     p "Bien que sa puissance télépathique soit incomparable il ne peut pas contrôler toutes ses créatures sur des millions d'années lumières d'étendues."
@@ -100,22 +101,45 @@ label genovore:
     show genovore face at left
     # initialisation du génovore et de ses caracs et de son interface
     show screen genovore
-    g "Mes respects, esprit de la ruche. Le vaisseau qui me transportait a enfin atteri sur la planète d'Extremis"
-    g "J'ai su jusqu'ici rester discret, la barre de discrétion ci dessus est à zéro. Mais je suis encore enfermé dans le vaisseau qui ne me semble pas avoir atteri dans la ruche même."
+    g "Mes respects, esprit de la ruche. Le vaisseau qui me transportait a enfin aterri sur la planète d'Extremis"
+    g "J'ai su jusqu'ici rester discret, la barre de repérage ci dessus est à zéro. Mais je suis encore enfermé dans le vaisseau qui ne me semble pas avoir atteri dans la ruche même."
     g "Si je veux accomplir ce que mon instinct me crie je dois atteindre la ruche pour y contaminer des humains et la prendre comme base pour infester la planète."
     g "Par contre ce long voyage en demi hibernation a vidé mes réserves, je suis affamé. Ceci peut se voir dans la barre en haut à gauche."
+
+    hide genovore face
+    show humain pilote at right
+    with Dissolve(.5)
+    hp "Pas faché d'être enfin arrivé sur cette fichue planète."
+    hp "J'ai été mal à l'aise pendant tout le voyage."
+    hp "À croire qu'on a ramassé un démon dans le warp qui nous hante depuis."
+    hp "En tout cas dès que j'ai fini la checklist je file au bar le plus proche pour oublier tout ça."
+
+    show genovore face at left
+    with Dissolve(.5)
+    g "Cet humain seul est une proie facile."
     menu:
         "Que faire ?"
-        "Chercher un membre isolé de l'équipage pour le dévorer.":
-            jump genovore_devore_1
-        "Sortir d'abord du vaisseau le plus discrètement possible.":
+        "Le tuer pour le dévorer.":
+            jump genovore_devore_pilote
+        "Le contaminer.":
+            jump genovore_contamine_pilote
+        "Le suivre discrètement pour sortir d'abord du vaisseau.":
+            jump genovore_sort_vaisseau_avec_pilote
+        "L'ignorer et sortir par vos propres moyens.":
             jump genovore_sort_vaisseau
 
-label genovore_devore_1:
+label genovore_devore_pilote:
     $ genovoreMange()
     $ ajouteReperage(5)
     g "pas fait"
-    label genovore_sort_vaisseau:
+
+label genovore_contamine_pilote:
+    g "pas fait"
+
+label genovore_sort_vaisseau_avec_pilote:
+    g "pas fait"
+
+label genovore_sort_vaisseau:
     g "pas fait"
 
     scene bg monde_ruche
@@ -133,6 +157,9 @@ label patriarche_genovore:
     show patriarche_genovore face at left
     pg "pas fait"
     pg "création du magus"
+    # effets si la jauge "repérage" est pleine (ou si la rébellion est lancée)
+    # - avertissement quand elle est à moitié pleine avec conseils
+    # - grosse purge Imperium : beaucoup des infiltrés sont tués
     pg "appel de la flotte ruche"
 
 # ------> combat spatial à l'approche du système
