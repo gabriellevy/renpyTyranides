@@ -61,7 +61,7 @@ label start:
     with Dissolve(.5)
     show prince flingue at left
 
-    jump genovore # temp
+    jump genovore_contamine_pilote # temp
 
     p "L'esprit de la ruche a faim. Il veut cette galaxie toute entière."
     p "Bien que sa puissance télépathique soit incomparable il ne peut pas contrôler toutes ses créatures sur des millions d'années lumières d'étendues."
@@ -134,13 +134,25 @@ label genovore_devore_pilote:
     g "pas fait"
 
 label genovore_contamine_pilote:
-    g "pas fait"
+    "Vous vous approchez du fragile humain puis vous mettez subitement devant lui pour croiser son regard avant qu'il ait le temps de crier de terreur."
+    "Dès qu'il a fixé le fond de vos yeux il perd son expression de surprise et tombe sous votre emprise."
+    "Votre ovipositeur surgit alors de votre bouche et lui implante votre ADN en perçant son épaule près du cou."
+    "Bientôt il tombe définitivement sous votre influence sans même que vous ayez besoin de l'hypnotiser."
+    "Vous le suivez pour quitter le vaisseau en évitant d'autres humains."
+    "Il est maintenant à vous et vous pourrez le rappeler quand bon vous semblera."
+    "Contaminer un pilote est déjà risqué car ça attirera l'attention sur un péril externe à la planète si il est découvert."
+    "Mais si en plus il quittait son poste vous courreriez trop de risques que l'alarme soit donnée."
+    "Une fois dehors vous le laissez donc aller au bar comme il l'aurait fait. En espérant que personne ne remarque trop son air absent et béat."
+    # ajouter un à contaminé et 1 à repérage
+    jump genovore_hors_vaisseau
 
 label genovore_sort_vaisseau_avec_pilote:
     g "pas fait"
 
 label genovore_sort_vaisseau:
     g "pas fait"
+
+label genovore_hors_vaisseau:
 
     scene bg monde_ruche
     with Dissolve(.5)
@@ -149,6 +161,7 @@ label genovore_sort_vaisseau:
     g "** Il va falloir entrer dans la ruche."
     g "** Maintenant il faut contaminer des humains."
     g "** Tout en réussissant à rester caché."
+    # si il y a eu investissement en infestation le génovore rencontre d'autres génovores soumis à sa direction
 
 # ------> le genestealer  devient un patriarche et infiltre la planète
 label patriarche_genovore:
