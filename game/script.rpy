@@ -9,6 +9,7 @@ define p = Character('Prince', color="#91160f")
 define g = Character('Genovore', color="#3f0f5d")
 define pg = Character('Patriarche génovore', color="#3f0f5d")
 define hp = Character('Pilote', color="#251f99")
+define narrator = Character(what_outlines=[(1, "#c15757",0,0)], what_italic=True)
 
 # -------> Explication du prince, galaxie
 label start:
@@ -61,7 +62,7 @@ label start:
     with Dissolve(.5)
     show prince flingue at left
 
-    jump genovore_contamine_pilote # temp
+    jump patriarche_genovore # temp
 
     p "L'esprit de la ruche a faim. Il veut cette galaxie toute entière."
     p "Bien que sa puissance télépathique soit incomparable il ne peut pas contrôler toutes ses créatures sur des millions d'années lumières d'étendues."
@@ -104,7 +105,8 @@ label genovore:
     g "Mes respects, esprit de la ruche. Le vaisseau qui me transportait a enfin aterri sur la planète d'Extremis"
     g "J'ai su jusqu'ici rester discret, la barre de repérage ci dessus est à zéro. Mais je suis encore enfermé dans le vaisseau qui ne me semble pas avoir atteri dans la ruche même."
     g "Si je veux accomplir ce que mon instinct me crie je dois atteindre la ruche pour y contaminer des humains et la prendre comme base pour infester la planète."
-    g "Par contre ce long voyage en demi hibernation a vidé mes réserves, je suis affamé. Ceci peut se voir dans la barre en haut à gauche."
+    g "Par contre ce long voyage en hibernation a vidé mes réserves, je suis affamé. Ceci peut se voir dans la barre en haut à gauche."
+    "Votre esprit supérieur submerge le génovore. Vous êtes maintenant lui, il est maintenant vous. Cette planète sera bientôt vôtre."
 
     hide genovore face
     show humain pilote at right
@@ -168,6 +170,12 @@ label patriarche_genovore:
     scene bg egouts
     with Dissolve(.5)
     show patriarche_genovore face at left
+    with moveinbottom
+    "Vous avez maintenant suffisamment d'adeptes sur cette planète pour les laisser continuer la contamination sans votre action directe."
+    "Alors que le nombre de vos suivants augmentait vous avez senti votre taille s'accroître, vos griffes s'allonger."
+    "Mais surtout vous avez senti votre crâne et vos pouvoirs psychiques devenir démesurés."
+    "À présent vous ne devez plus prendre le risque de sortir de votre repaire au fonds des égoûts. Votre vie est trop précieuse pour l'esprit de la ruche."
+    "Vous êtes maintenant un patriarche Génovore et votre destin est de régner sur ce monde."
     pg "pas fait"
     pg "création du magus"
     # effets si la jauge "repérage" est pleine (ou si la rébellion est lancée)
@@ -228,6 +236,10 @@ label guerre_au_sol:
 
 # ---------> tyranoformation, extermination des poches de résistance, digestion de la planète
     # tyranoformation : https://omnis-bibliotheca.com/index.php/Spores_Tyranides
+    # https://omnis-bibliotheca.com/index.php/Fosses_Gastriques
+    # https://omnis-bibliotheca.com/index.php/Tours_Capillaires
+    # https://omnis-bibliotheca.com/index.php/Puits_%C3%A0_Magma
+    # https://omnis-bibliotheca.com/index.php/B%C3%AAtes_Nourrici%C3%A8res_Tyranides
 label nettoyage:
     scene bg jungle
     with Dissolve(.5)

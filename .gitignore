@@ -9,3 +9,4 @@ game/cache/screens.rpyb
 *.rpyc
 game/cache/screens.rpyb
 game/cache/bytecode.rpyb
+*.rpyb
