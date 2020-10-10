@@ -11,3 +11,6 @@ game/cache/screens.rpyb
 game/cache/bytecode.rpyb
 *.rpyb
 *.rpyb
+*.rpyb
+game/cache/bytecode.rpyb
+game/cache/screens.rpyb

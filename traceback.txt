@@ -35,4 +35,4 @@ AttributeError: 'StoreModule' object has no attribute 'rafraichirInvestissement'
 Windows-8-6.2.9200
 Ren'Py 7.3.5.606
 Tyranides 1.0
-Fri Oct 09 21:13:10 2020
+Sat Oct 10 23:37:32 2020
