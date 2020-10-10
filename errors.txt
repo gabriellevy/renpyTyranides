@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/screens.rpy", line 1554: u'action' is not a keyword argument or valid child for the bar statement.
-    action rafraichirInvestissement
-          ^
+File "game/script.rpy", line 174: Line is indented, but the preceding show screen statement statement does not expect a block. Please check this line's indentation.
+    scene bg monde_ruche
+    ^
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Mon Oct 05 22:15:31 2020
+Fri Oct 09 21:31:57 2020

@@ -1574,7 +1574,7 @@ screen genovore():
     tag interface_personnage
     frame:
         xpos 5 ypos 5
-        grid 2 3:
+        grid 2 5:
             xsize 210
             spacing 5
             text _("[sante]")
@@ -1585,6 +1585,10 @@ screen genovore():
             text _("Repéré ([niveauReperage]/[reperageMax])")
             bar:
                 value AnimatedValue(niveauReperage, 100, 1.0)
+            text _("Contaminés : [contamines]")
+            null
+            text _("Génovores : [genovores]")
+            null
 
 screen invasion_planetaire():
     tag interface_personnage

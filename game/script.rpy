@@ -9,7 +9,7 @@ define p = Character('Prince', color="#91160f")
 define g = Character('Genovore', color="#3f0f5d")
 define pg = Character('Patriarche génovore', color="#3f0f5d")
 define hp = Character('Pilote', color="#251f99")
-define narrator = Character(what_outlines=[(1, "#c15757",0,0)], what_italic=True)
+define narrator = Character(what_outlines=[(1, "#3a0505",0,0)], what_italic=True)
 
 # -------> Explication du prince, galaxie
 label start:
@@ -28,11 +28,19 @@ label start:
         investTyranisation = 5
         investAdaptabilite = 5
 
+        # suivants génovores
+        contamines = 0
+        genovores = 1
+
         def ajouteReperage(val):
             global niveauReperage, reperageMax
             niveauReperage = niveauReperage + val
             if niveauReperage > reperageMax:
                 niveauReperage = reperageMax
+
+        def ajouteContamine(val):
+            global contamines
+            contamines = contamines + 1
 
         def genovoreMange():
             niveauFaim = 0
@@ -62,7 +70,7 @@ label start:
     with Dissolve(.5)
     show prince flingue at left
 
-    jump patriarche_genovore # temp
+    jump test_temp # temp
 
     p "L'esprit de la ruche a faim. Il veut cette galaxie toute entière."
     p "Bien que sa puissance télépathique soit incomparable il ne peut pas contrôler toutes ses créatures sur des millions d'années lumières d'étendues."
@@ -78,7 +86,7 @@ label start:
     # - troupes de combat classique (des termagants aux carnifex)
     # - adptabilité : permet de garder des réserves pour les cas imprévus, de réinvestir...
 
-# label test_temp:
+
     show screen preparer_flotte
 label texte_investissement:
     # la fonction de maj ci dessus ne marche pas.... à voir plus tard j'espère quand j'aurai des exemples de bar appelant du python
@@ -96,74 +104,7 @@ label texte_investissement:
     p "Réglez les glisseurs pour déterminer votre investissement en biomasse dans chacune de ces caractéristiques puis validez."
     jump texte_investissement
 
-# ------> arrivée sur la planète, passage en tant que simple génovore
-label genovore:
-    scene bg interieur vaisseau
-    show genovore face at left
-    # initialisation du génovore et de ses caracs et de son interface
-    show screen genovore
-    g "Mes respects, esprit de la ruche. Le vaisseau qui me transportait a enfin aterri sur la planète d'Extremis"
-    g "J'ai su jusqu'ici rester discret, la barre de repérage ci dessus est à zéro. Mais je suis encore enfermé dans le vaisseau qui ne me semble pas avoir atteri dans la ruche même."
-    g "Si je veux accomplir ce que mon instinct me crie je dois atteindre la ruche pour y contaminer des humains et la prendre comme base pour infester la planète."
-    g "Par contre ce long voyage en hibernation a vidé mes réserves, je suis affamé. Ceci peut se voir dans la barre en haut à gauche."
-    "Votre esprit supérieur submerge le génovore. Vous êtes maintenant lui, il est maintenant vous. Cette planète sera bientôt vôtre."
-
-    hide genovore face
-    show humain pilote at right
-    with Dissolve(.5)
-    hp "Pas faché d'être enfin arrivé sur cette fichue planète."
-    hp "J'ai été mal à l'aise pendant tout le voyage."
-    hp "À croire qu'on a ramassé un démon dans le warp qui nous hante depuis."
-    hp "En tout cas dès que j'ai fini la checklist je file au bar le plus proche pour oublier tout ça."
-
-    show genovore face at left
-    with Dissolve(.5)
-    g "Cet humain seul est une proie facile."
-    menu:
-        "Que faire ?"
-        "Le tuer pour le dévorer.":
-            jump genovore_devore_pilote
-        "Le contaminer.":
-            jump genovore_contamine_pilote
-        "Le suivre discrètement pour sortir d'abord du vaisseau.":
-            jump genovore_sort_vaisseau_avec_pilote
-        "L'ignorer et sortir par vos propres moyens.":
-            jump genovore_sort_vaisseau
-
-label genovore_devore_pilote:
-    $ genovoreMange()
-    $ ajouteReperage(5)
-    g "pas fait"
-
-label genovore_contamine_pilote:
-    "Vous vous approchez du fragile humain puis vous mettez subitement devant lui pour croiser son regard avant qu'il ait le temps de crier de terreur."
-    "Dès qu'il a fixé le fond de vos yeux il perd son expression de surprise et tombe sous votre emprise."
-    "Votre ovipositeur surgit alors de votre bouche et lui implante votre ADN en perçant son épaule près du cou."
-    "Bientôt il tombe définitivement sous votre influence sans même que vous ayez besoin de l'hypnotiser."
-    "Vous le suivez pour quitter le vaisseau en évitant d'autres humains."
-    "Il est maintenant à vous et vous pourrez le rappeler quand bon vous semblera."
-    "Contaminer un pilote est déjà risqué car ça attirera l'attention sur un péril externe à la planète si il est découvert."
-    "Mais si en plus il quittait son poste vous courreriez trop de risques que l'alarme soit donnée."
-    "Une fois dehors vous le laissez donc aller au bar comme il l'aurait fait. En espérant que personne ne remarque trop son air absent et béat."
-    # ajouter un à contaminé et 1 à repérage
-    jump genovore_hors_vaisseau
-
-label genovore_sort_vaisseau_avec_pilote:
-    g "pas fait"
-
-label genovore_sort_vaisseau:
-    g "pas fait"
-
-label genovore_hors_vaisseau:
-
-    scene bg monde_ruche
-    with Dissolve(.5)
-    show genovore face at left
-    with Dissolve(.5)
-    g "** Il va falloir entrer dans la ruche."
-    g "** Maintenant il faut contaminer des humains."
-    g "** Tout en réussissant à rester caché."
-    # si il y a eu investissement en infestation le génovore rencontre d'autres génovores soumis à sa direction
+    jump genovore # partie 2
 
 # ------> le genestealer  devient un patriarche et infiltre la planète
 label patriarche_genovore:
@@ -183,7 +124,7 @@ label patriarche_genovore:
     # - grosse purge Imperium : beaucoup des infiltrés sont tués
     pg "appel de la flotte ruche"
 
-# ------> combat spatial à l'approche du système
+# -----------------------------------------> combat spatial à l'approche du système
 label combat_spatial:
     # https://omnis-bibliotheca.com/index.php/Flottes-Ruches_Tyranides
     scene bg combat_spatial
@@ -191,9 +132,12 @@ label combat_spatial:
     p "pas fait"
     p "adaptation biovores selon situation"
 
-# ------> débarquement des tyranides, défenses planétaires
+# ---------------------------------------------> débarquement des tyranides, défenses planétaires
 label invasion:
     # ici la facilité de l'invasion doit dépendre de la surprise et du niveau d'infestation de la planète => ces caracs doivent être déduites des phases précédentes et annoncées.
+    # Une carac "tyranoformation" est calculée qui dépend du niveau d'infestation (ATTENTION INVESTISSEMENT)
+    # possibilité de faire des larguages non offensifs juste pour tyranoformer (eau, forêts, spores...)
+    # Phases d'invasion : https://omnis-bibliotheca.com/index.php/Monde_Tyrannoform%C3%A9
     # bombardement de spores https://omnis-bibliotheca.com/index.php/Spores_Tyranides
     # à partir de là ajouter une carac de "tyranoformation" pour tracer le changement de l'environnement
     # vague aérienne préventive possible : https://omnis-bibliotheca.com/index.php/Essaims_Volants_Tyranides
