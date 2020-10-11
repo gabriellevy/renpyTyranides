@@ -84,6 +84,7 @@ label invasion:
     # En outre, à la différence des autres créatures tyranides, les Hormagaunts sont capables de se reproduire de manière autonome, et pondent des centaines d’œufs dans le sol d’une planète avant que leur brève vie ne touche à son terme. Sitôt qu’une vague de ces créatures a été éliminée, un nouvel essaim a atteint sa maturité et se tient prêt à poursuivre les ravages de la génération précédente.
     # technique par pollution de planète qui rend les renforts inutiles car planète vite perdue pour l'Imperium : https://omnis-bibliotheca.com/index.php/Disperseurs_de_Spores
 
+    # si culte génovore finir avec la tragique extermination du culte serait beau cf fin de https://omnis-bibliotheca.com/index.php/Cat%C3%A9gorie:Cultes_Genestealers
 
     scene bg invasion_planetaire
     with Dissolve(.5)

@@ -1,5 +1,6 @@
 
 define pg = Character('Patriarche', color="#3f0f5d")
+define aco = Character('Acolyte Amalcus Nuthe', who_outlines=[(1, "#28231b",0,0)])
 define mg = Character('Dherregau Threndact, Magus', color = "#5b1b11", who_outlines=[(1, "#1b1213",0,0)])
 
 # ------> le genestealer  devient un patriarche et infiltre la planète
@@ -23,6 +24,7 @@ label cycle_de_contamination:
     # ajouter carac "respectabilité du culte" qui apporte des cultes mêmes sur les planètes étrangères et permet de créer des monuments légaux, baisse le repérage
 
 label hybrides_gen1:
+    # https://omnis-bibliotheca.com/index.php/Cat%C3%A9gorie:Cultes_Genestealers section "La Création d'un Culte" pour image et description hybrides
 
 label hybrides_gen2:
 
@@ -48,6 +50,12 @@ label creation_magus:
 
 label preparation_revolte:
     # capture de véhicules militaires et industriels
+
+label celebration_culte:
+    # je ne sais pas encore trop où je caserai ça... => mais ça serait cool pour l'ambiance, dans un evt aléatoire qui augmente els convertis par exemple
+    aco "Les Commissaires l’appellent la malédiction. Seuls les éclairés, ceux qui ont renoncé à leurs œillères, voient la vérité."
+    aco "Les choses enflées, difformes dans les conduits, ce ne sont pas des monstres. Ce sont des anges ! Ouvrez les yeux ! Ils ont été bénis et ont reçu la force des vrais vertueux."
+    aco "Les inquiétudes vaines comme l’orgueil, la symétrie des traits, ne sont que pure perte de temps. Ne préférez-vous pas une apparence laide, mais assortie de la force et de la liberté, à la beauté, à la faiblesse et à l’asservissement à un régime indifférent ?"
 
 label revolte_culte:
     # intervention Arbites ? cf intro https://omnis-bibliotheca.com/index.php/Cat%C3%A9gorie:Cultes_Genestealers

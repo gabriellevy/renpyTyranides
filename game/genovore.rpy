@@ -219,4 +219,7 @@ label fin_cycle_de_chasse:
 
     jump cycle_de_chasse
 
+label fin_chasse:
+    # possibilité d'attaquer un bâtiment exploré avant de devenir patriarche (par exemple église pour affaiblir culte)
+
     jump patriarche_genovore
