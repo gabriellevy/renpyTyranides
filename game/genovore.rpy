@@ -3,7 +3,6 @@ define g = Character('Genovore', color="#3f0f5d")
 # ---------------------------------> arrivée sur la planète, passage en tant que simple génovore
 label genovore:
 
-# python:
     scene bg interieur vaisseau
     show genovore face at left
     # initialisation du génovore et de ses caracs et de son interface
@@ -41,7 +40,7 @@ label genovore_devore_pilote:
     "Dès qu'il a fixé le fond de vos yeux il perd son expression de surprise et tombe sous votre emprise hypnotique."
     "Vous m'emmenez alors dans un coin sombre et tranquille du vaisseau pour le dévorer sauvagement."
     "Sa disparition et les restes attireront inévitablement l'attention mais au moins vous êtes bien rasassié."
-    $ genovoreMange()
+    $ niveauFaim = 0
     $ ajouteReperage(5)
     jump genovore_sort_vaisseau
 
@@ -100,8 +99,6 @@ label genovore_voyage:
     $ ajouteReperage(1)
     jump genovore_entree_ruche
 
-label test_temp:
-    show screen genovore
 label genovore_entree_ruche:
     $ niveauFaim = niveauFaim + 1
     "Pendant le trajet vous avez pu contempler l'aspect complètement démesuré de cette ville à partir de laquelle vous vous lancerez à la conquête de ce monde."
@@ -155,6 +152,9 @@ label genovore_entree_noblesse:
     $ niveauFaim = niveauFaim + 3
     jump cycle_de_chasse
 
+label test_temp:
+    show screen genovore
+
 label cycle_de_chasse:
     show genovore face at left
     with moveinbottom
@@ -164,9 +164,59 @@ label cycle_de_chasse:
         "Retournant subitement à la sauvagerie le génovore agresse le premier humain solitaire qu'il croise et l'emporte dans les égoûts pour le dévorer."
         "Ce meurtre au hasard est dangereux mais au moins la faim est passée."
         $ ajouteReperage(quartier*3)
-        $ genovoreMange()
+        $ niveauFaim = 0
 
     g "Je suis à nouveau à l'abri dans mon repaire maître. Les proies humaines ne manquent pas par ici, ni les cachettes."
     g "Ordonnez, je suis prêt à obéir."
+
+    menu:
+        "Rassasiez vous de proies." if niveauFaim >= 2:
+            jump cycle_de_chasse_mange
+        "Contaminez le maximum d'humains.":
+            jump cycle_de_chasse_contamine
+        "Explorez les environs.":
+            jump cycle_de_chasse_explore
+
+label cycle_de_chasse_mange:
+    "pas fait miam"
+    $ niveauFaim = 0
+    $ contamines = contamines + genovores + 3
+    jump fin_cycle_de_chasse
+
+label cycle_de_chasse_contamine:
+    "pas fait contamine"
+    $ niveauFaim = niveauFaim + 2
+    $ contamines = contamines + 3 * genovores + 5
+    jump fin_cycle_de_chasse
+
+label cycle_de_chasse_explore:
+    "pas fait explore"
+    # tirez au hasard des découvertes parmi les accessibles dans la quartier du génovore :
+    #  - base militaire (si niveau 2 ou 3)
+    #  - église (tous quartiers) -> si attaquée gros bonus pour le culte plus tard
+    #  - armurerie
+    #  - fabricants d'outils industriels massifs
+    $ niveauFaim = niveauFaim + 2
+    $ contamines = contamines + genovores + 3
+    jump fin_cycle_de_chasse
+
+label fin_cycle_de_chasse:
+    $ ajouteReperage(quartier)
+    # événement aléatoire :
+    # - un génovore trouvé (1 mort + repérage += 10)
+    # - + investInfestation génovores arrivent à votre service
+    # - grosse faim + 3
+    $ nbCycleChasse = nbCycleChasse + 1
+
+    if nbCycleChasse > 8:
+        if contamines > 100:
+            jump patriarche_genovore
+    if niveauReperage > 50:
+        if inquisiteurPresent:
+            "pas fait : trouvé et exécuté" # seulement 30% de chance
+        else:
+            $ inquisiteurPresent = True # seulement 30% de chance
+
+    jump cycle_de_chasse
 
     jump patriarche_genovore

@@ -1,38 +1,26 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00start.rpy", line 212, in script call
-    call _load_reload_game from _call__load_reload_game_1
-  File "renpy/common/00keymap.rpy", line 456, in script
-    python hide:
-  File "renpy/common/00keymap.rpy", line 456, in <module>
-    python hide:
-  File "renpy/common/00keymap.rpy", line 466, in _execute_python_hide
-    renpy.load("_reload-2")
-AttributeError: 'StoreModule' object has no attribute 'rafraichirInvestissement'
+  File "game/genovore.rpy", line 207, in script
+    $ nbCycleChasse = nbCycleChasse + 1
+  File "game/genovore.rpy", line 207, in <module>
+    $ nbCycleChasse = nbCycleChasse + 1
+NameError: name 'nbCycleChasse' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/00start.rpy", line 212, in script call
-    call _load_reload_game from _call__load_reload_game_1
-  File "renpy/common/00keymap.rpy", line 456, in script
-    python hide:
+  File "game/genovore.rpy", line 207, in script
+    $ nbCycleChasse = nbCycleChasse + 1
   File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\ast.py", line 914, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\python.py", line 2028, in py_exec_bytecode
     exec bytecode in globals, locals
-  File "renpy/common/00keymap.rpy", line 456, in <module>
-    python hide:
-  File "renpy/common/00keymap.rpy", line 466, in _execute_python_hide
-    renpy.load("_reload-2")
-  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\loadsave.py", line 769, in load
-    roots, log = loads(location.load(filename))
-  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\loadsave.py", line 63, in loads
-    return cPickle.loads(s)
-AttributeError: 'StoreModule' object has no attribute 'rafraichirInvestissement'
+  File "game/genovore.rpy", line 207, in <module>
+    $ nbCycleChasse = nbCycleChasse + 1
+NameError: name 'nbCycleChasse' is not defined
 
 Windows-8-6.2.9200
 Ren'Py 7.3.5.606
 Tyranides 1.0
-Sun Oct 11 16:25:57 2020
+Sun Oct 11 19:30:48 2020

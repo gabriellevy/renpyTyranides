@@ -26,7 +26,9 @@ label start:
         # suivants génovores
         contamines = 0
         genovores = 1
-        quartier = 1 #basFonds = 1, industriel = 2, noblesse = 3
+        quartier = 2 #basFonds = 1, industriel = 2, noblesse = 3
+        nbCycleChasse = 0
+        inquisiteurPresent = False
 
         def ajouteReperage(val):
             global niveauReperage, reperageMax
@@ -37,9 +39,6 @@ label start:
         def ajouteContamine(val):
             global contamines
             contamines = contamines + 1
-
-        def genovoreMange():
-            niveauFaim = 0
 
         def rafraichirInvestissement():
             global investTotal, investInfestation, investTroupes, investFlotte, investBiotitan, investTyranisation, investAdaptabilite

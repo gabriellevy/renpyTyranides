@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-The label test_temp is defined twice, at
-  File "game/genovore.rpy", line 105 and
-  File "game/patriarche.rpy", line 5.
+File "game/genovore.rpy", line 176: expected menuitem
+    if niveauFaim >= 10:
+    ^
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Sun Oct 11 18:38:43 2020
+Sun Oct 11 19:20:58 2020
