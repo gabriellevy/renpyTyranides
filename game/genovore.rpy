@@ -2,6 +2,8 @@ define g = Character('Genovore', color="#3f0f5d")
 
 # ---------------------------------> arrivée sur la planète, passage en tant que simple génovore
 label genovore:
+
+# python:
     scene bg interieur vaisseau
     show genovore face at left
     # initialisation du génovore et de ses caracs et de son interface
@@ -53,6 +55,7 @@ label genovore_contamine_pilote:
     "Contaminer un pilote est déjà risqué car ça attirera l'attention sur un péril externe à la planète si il est découvert."
     "Mais si en plus il quittait son poste vous courreriez trop de risques que l'alarme soit donnée."
     "Une fois dehors vous le laissez donc aller au bar comme il l'aurait fait. En espérant que personne ne remarque trop son air absent et béat."
+    "Cette nuit la graîne que lui avez implanté fera son chemin et votre marque sera implantée dans son ADN, corrompant ses enfants avec les gènes génovores."
     $ ajouteReperage(1)
     $ ajouteContamine(1)
     jump genovore_hors_vaisseau
@@ -69,8 +72,6 @@ label genovore_sort_vaisseau:
     jump genovore_hors_vaisseau
 
 label genovore_hors_vaisseau:
-
-    show screen genovore
     scene bg monde_ruche
     with Dissolve(.5)
     show genovore face at left
@@ -99,6 +100,8 @@ label genovore_voyage:
     $ ajouteReperage(1)
     jump genovore_entree_ruche
 
+label test_temp:
+    show screen genovore
 label genovore_entree_ruche:
     $ niveauFaim = niveauFaim + 1
     "Pendant le trajet vous avez pu contempler l'aspect complètement démesuré de cette ville à partir de laquelle vous vous lancerez à la conquête de ce monde."
@@ -153,7 +156,17 @@ label genovore_entree_noblesse:
     jump cycle_de_chasse
 
 label cycle_de_chasse:
-    g "** Maintenant il faut contaminer des humains."
-    g "** Tout en réussissant à rester caché."
+    show genovore face at left
+    with moveinbottom
+
+    if niveauFaim >= 10:
+        g "La faim me tiraille je ne peux plus y résister !"
+        "Retournant subitement à la sauvagerie le génovore agresse le premier humain solitaire qu'il croise et l'emporte dans les égoûts pour le dévorer."
+        "Ce meurtre au hasard est dangereux mais au moins la faim est passée."
+        $ ajouteReperage(quartier*3)
+        $ genovoreMange()
+
+    g "Je suis à nouveau à l'abri dans mon repaire maître. Les proies humaines ne manquent pas par ici, ni les cachettes."
+    g "Ordonnez, je suis prêt à obéir."
 
     jump patriarche_genovore

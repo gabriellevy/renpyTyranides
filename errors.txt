@@ -2,9 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 174: Line is indented, but the preceding show screen statement statement does not expect a block. Please check this line's indentation.
-    scene bg monde_ruche
-    ^
+The label test_temp is defined twice, at
+  File "game/genovore.rpy", line 105 and
+  File "game/patriarche.rpy", line 5.
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Fri Oct 09 21:31:57 2020
+Sun Oct 11 18:38:43 2020

@@ -2,7 +2,6 @@
 define pg = Character('Patriarche', color="#3f0f5d")
 define mg = Character('Dherregau Threndact, Magus', color = "#5b1b11", who_outlines=[(1, "#1b1213",0,0)])
 
-label test_temp:
 # ------> le genestealer  devient un patriarche et infiltre la planète
 label patriarche_genovore:
     scene bg egouts
@@ -46,6 +45,9 @@ label creation_magus:
     mg "Un ost d’anges à l’image des véritables maîtres de cette galaxie ! Une panoplie de dieux pour qui rien n’est hors de portée !"
     mg "Je suis à votre service, DIeu vivant venu des étoiles."
     mg "Ordonnez j'obéirai."
+
+label preparation_revolte:
+    # capture de véhicules militaires et industriels
 
 label revolte_culte:
     # intervention Arbites ? cf intro https://omnis-bibliotheca.com/index.php/Cat%C3%A9gorie:Cultes_Genestealers
