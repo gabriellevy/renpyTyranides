@@ -156,4 +156,4 @@ label cycle_de_chasse:
     g "** Tout en réussissant à rester caché."
     # si il y a eu investissement en infestation le génovore rencontre d'autres génovores soumis à sa direction
 
-jump patriarche_genovore
+    jump patriarche_genovore

@@ -68,23 +68,7 @@ label start:
 
     jump preparation_flotte # partie 1
 
-# ------> le genestealer  devient un patriarche et infiltre la planète
-label patriarche_genovore:
-    scene bg egouts
-    with Dissolve(.5)
-    show patriarche_genovore face at left
-    with moveinbottom
-    "Vous avez maintenant suffisamment d'adeptes sur cette planète pour les laisser continuer la contamination sans votre action directe."
-    "Alors que le nombre de vos suivants augmentait vous avez senti votre taille s'accroître, vos griffes s'allonger."
-    "Mais surtout vous avez senti votre crâne et vos pouvoirs psychiques devenir démesurés."
-    "À présent vous ne devez plus prendre le risque de sortir de votre repaire au fonds des égoûts. Votre vie est trop précieuse pour l'esprit de la ruche."
-    "Vous êtes maintenant un patriarche Génovore et votre destin est de régner sur ce monde."
-    pg "pas fait"
-    pg "création du magus"
-    # effets si la jauge "repérage" est pleine (ou si la rébellion est lancée)
-    # - avertissement quand elle est à moitié pleine avec conseils
-    # - grosse purge Imperium : beaucoup des infiltrés sont tués
-    pg "appel de la flotte ruche"
+
 
 # -----------------------------------------> combat spatial à l'approche du système
 label combat_spatial:
@@ -149,5 +133,5 @@ label guerre_au_sol:
 label nettoyage:
     scene bg jungle
     with Dissolve(.5)
-    "traque lictor."
-    "consommation apr les voraces et extermination."
+    "traque lictor pour repérer les dernières places fortes dans une zone de jungle."
+    "consommation par les voraces et extermination."
