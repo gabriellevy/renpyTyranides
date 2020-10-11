@@ -1,3 +1,5 @@
+define g = Character('Genovore', color="#3f0f5d")
+
 # ---------------------------------> arrivée sur la planète, passage en tant que simple génovore
 label genovore:
     scene bg interieur vaisseau
@@ -116,7 +118,6 @@ label genovore_entree_ruche:
     "Il faudra néanmoins escalader la spire pendant des heures pour l'atteindre."
     "Enfin, il reste la tête de la spire où se trouve la noblesse. Là vous gagnerez bien plus vite de l'influence en contaminant des personnes haut placées mais il sera bien plus dangereux d'y demeurer."
 
-label test_temp:
     menu:
         "S'introduire dans les bas-fonds.":
             jump genovore_entree_bas_fonds
@@ -154,6 +155,5 @@ label genovore_entree_noblesse:
 label cycle_de_chasse:
     g "** Maintenant il faut contaminer des humains."
     g "** Tout en réussissant à rester caché."
-    # si il y a eu investissement en infestation le génovore rencontre d'autres génovores soumis à sa direction
 
     jump patriarche_genovore

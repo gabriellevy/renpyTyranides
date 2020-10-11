@@ -6,3 +6,4 @@ game/screens.rpyc
 *.rpyb
 game/cache/bytecode.rpyb
 game/cache/screens.rpyb
+*.save

@@ -3,8 +3,6 @@ label preparation_flotte:
     with Dissolve(.5)
     show prince flingue at left
 
-    # jump test_temp # temp
-
     p "L'esprit de la ruche a faim. Il veut cette galaxie toute entière."
     p "Bien que sa puissance télépathique soit incomparable il ne peut pas contrôler toutes ses créatures sur des millions d'années lumières d'étendues."
     p "Vous, comme moi, êtes une extension de son esprit. Vous êtes destiné à le servir en conquérant et dévorant la planète qu'il vous assignera dans un secteur particulier."

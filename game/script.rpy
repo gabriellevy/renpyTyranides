@@ -1,13 +1,8 @@
-﻿# Vous pouvez placer le script de votre jeu dans ce fichier.
-
-
-# Déclarez sous cette ligne les images, avec l'instruction 'image'
+﻿# Déclarez sous cette ligne les images, avec l'instruction 'image'
 # ex: image eileen heureuse = "eileen_heureuse.png"
 
 # Déclarez les personnages utilisés dans le jeu.
 define p = Character('Prince', color="#91160f")
-define g = Character('Genovore', color="#3f0f5d")
-define pg = Character('Patriarche génovore', color="#3f0f5d")
 define hp = Character('Pilote', color="#251f99")
 define narrator = Character(what_outlines=[(1, "#3a0505",0,0)], what_italic=True)
 
@@ -66,9 +61,8 @@ label start:
             if ( investTotal > total ):
                 investAdaptabilite = investAdaptabilite + (investTotal - total)
 
+    jump test_temp # temp
     jump preparation_flotte # partie 1
-
-
 
 # -----------------------------------------> combat spatial à l'approche du système
 label combat_spatial:
