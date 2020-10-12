@@ -23,11 +23,18 @@ label start:
         investTyranisation = 5
         investAdaptabilite = 5
 
+        # ------------- data génovore
         # suivants génovores
         contamines = 0
         genovores = 1
-        quartier = 2 #basFonds = 1, industriel = 2, noblesse = 3
+        # lieux ruche
+        quartier = 2 # basFonds = 1, industriel = 2, noblesse = 3
+        couventSororitasEtat = 0 # 0==inconnu; 1==trouvé, 2==détruit, 3==Contrôlé
+        administratumEtat = 0
+        usineEtat = 0
+        # donnees chasse
         nbCycleChasse = 0
+        # donnees reperage
         inquisiteurPresent = False
 
         def ajouteReperage(val):

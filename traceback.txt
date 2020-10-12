@@ -1,26 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/genovore.rpy", line 207, in script
-    $ nbCycleChasse = nbCycleChasse + 1
-  File "game/genovore.rpy", line 207, in <module>
-    $ nbCycleChasse = nbCycleChasse + 1
-NameError: name 'nbCycleChasse' is not defined
+  File "game/genovore.rpy", line 172, in script
+    menu:
+  File "game/genovore.rpy", line 177, in <module>
+    "Explorez les environs." if couventSororitasEtat != 1 and administratumEtat != 1 and usineEtat != 1:
+NameError: name 'administratumEtat' is not defined
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/genovore.rpy", line 207, in script
-    $ nbCycleChasse = nbCycleChasse + 1
-  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\ast.py", line 914, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\python.py", line 2028, in py_exec_bytecode
-    exec bytecode in globals, locals
-  File "game/genovore.rpy", line 207, in <module>
-    $ nbCycleChasse = nbCycleChasse + 1
-NameError: name 'nbCycleChasse' is not defined
+  File "game/genovore.rpy", line 172, in script
+    menu:
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\ast.py", line 1628, in execute
+    choice = renpy.exports.menu(choices, self.set, args, kwargs, item_arguments)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\exports.py", line 956, in menu
+    condition = renpy.python.py_eval(condition)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\python.py", line 2059, in py_eval
+    return py_eval_bytecode(code, globals, locals)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\python.py", line 2052, in py_eval_bytecode
+    return eval(bytecode, globals, locals)
+  File "game/genovore.rpy", line 177, in <module>
+    "Explorez les environs." if couventSororitasEtat != 1 and administratumEtat != 1 and usineEtat != 1:
+NameError: name 'administratumEtat' is not defined
 
 Windows-8-6.2.9200
 Ren'Py 7.3.5.606
 Tyranides 1.0
-Sun Oct 11 19:30:48 2020
+Mon Oct 12 22:26:26 2020

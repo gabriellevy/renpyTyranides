@@ -174,7 +174,7 @@ label cycle_de_chasse:
             jump cycle_de_chasse_mange
         "Contaminez le maximum d'humains.":
             jump cycle_de_chasse_contamine
-        "Explorez les environs.":
+        "Explorez les environs." if couventSororitasEtat != 1 or administratumEtat != 1 or usineEtat != 1:
             jump cycle_de_chasse_explore
 
 label cycle_de_chasse_mange:
@@ -198,6 +198,24 @@ label cycle_de_chasse_explore:
     #  - fabricants d'outils industriels massifs
     $ niveauFaim = niveauFaim + 2
     $ contamines = contamines + genovores + 3
+label cycle_de_chasse_explore_random:
+    $ indexExploration = renpy.random.randint(1, 3)
+    if indexExploration == 1:
+        if couventSororitasEtat == 1:
+            jump cycle_de_chasse_explore_random
+        "pas fait découvert couvent Sororitas"
+        $ couventSororitasEtat = 1 # 0==inconnu; 1==trouvé, 2==détruit, 3==Contrôlé
+    elif indexExploration == 2:
+        if administratumEtat == 1:
+            jump cycle_de_chasse_explore_random
+        "pas fait découvert administratum"
+        $ administratumEtat = 1
+    elif indexExploration == 3:
+        if usineEtat == 1:
+            jump cycle_de_chasse_explore_random
+        "pas fait découvert usine"
+        $ usineEtat = 1
+
     jump fin_cycle_de_chasse
 
 label fin_cycle_de_chasse:
