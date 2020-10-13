@@ -2,17 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/genovore.rpy", line 207: expected statement.
-    couventSororitasEtat = 1 
-                         ^
-
-File "game/genovore.rpy", line 212: expected statement.
-    administratumEtat = 1
-                      ^
-
-File "game/genovore.rpy", line 217: expected statement.
-    usineEtat = 1
-              ^
+The label fin_chasse is defined twice, at
+  File "game/genovore.rpy", line 241 and
+  File "game/genovore.rpy", line 270.
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Mon Oct 12 22:25:51 2020
+Tue Oct 13 21:40:38 2020

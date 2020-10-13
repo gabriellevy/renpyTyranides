@@ -26,7 +26,12 @@ label start:
         # ------------- data génovore
         # suivants génovores
         contamines = 0
+        hybridesGen1 = 0
+        hybridesGen2 = 0
+        hybridesGen3 = 0
+        hybridesGen4 = 0
         genovores = 1
+        forceCulte = 0
         # lieux ruche
         quartier = 2 # basFonds = 1, industriel = 2, noblesse = 3
         couventSororitasEtat = 0 # 0==inconnu; 1==trouvé, 2==détruit, 3==Contrôlé
@@ -43,9 +48,13 @@ label start:
             if niveauReperage > reperageMax:
                 niveauReperage = reperageMax
 
+        def calculerForce():
+            global contamines, hybridesGen1, hybridesGen2, hybridesGen3, hybridesGen4, genovores
+            return contamines + hybridesGen1 + hybridesGen2 + hybridesGen3 + hybridesGen4 + genovores*10
+
         def ajouteContamine(val):
-            global contamines
-            contamines = contamines + 1
+            global contamines, genovores
+            contamines = contamines + val
 
         def rafraichirInvestissement():
             global investTotal, investInfestation, investTroupes, investFlotte, investBiotitan, investTyranisation, investAdaptabilite

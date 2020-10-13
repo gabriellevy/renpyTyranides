@@ -165,6 +165,7 @@ label cycle_de_chasse:
         "Ce meurtre au hasard est dangereux mais au moins la faim est passée."
         $ ajouteReperage(quartier*3)
         $ niveauFaim = 0
+        $ nbCycleChasse = nbCycleChasse + 1
 
     g "Je suis à nouveau à l'abri dans mon repaire maître. Les proies humaines ne manquent pas par ici, ni les cachettes."
     g "Ordonnez, je suis prêt à obéir."
@@ -226,9 +227,8 @@ label fin_cycle_de_chasse:
     # - grosse faim + 3
     $ nbCycleChasse = nbCycleChasse + 1
 
-    if nbCycleChasse > 8:
-        if contamines > 100:
-            jump patriarche_genovore
+    if nbCycleChasse > 8 and contamines > 100:
+            jump fin_chasse
     if niveauReperage > 50:
         if inquisiteurPresent:
             "pas fait : trouvé et exécuté" # seulement 30% de chance
@@ -239,5 +239,40 @@ label fin_cycle_de_chasse:
 
 label fin_chasse:
     # possibilité d'attaquer un bâtiment exploré avant de devenir patriarche (par exemple église pour affaiblir culte)
+    if couventSororitasEtat == 1 or administratumEtat == 1 or usineEtat == 1:
+        $ forceCulte = calculerForce()
+        if forceCulte > 120:
+            g "Le culte est suffisamment puissant pour attaquer nos ennemis."
+            g "Nous risquons de nous faire repérer et d'avoir des pertes mais ce serait le moment idéal pour frapper un grand coup par surprise et prendre l'avantage."
+            if couventSororitasEtat:
+                g "Attaquer le couvent des soeurs de bataille écarte un ennemi très dangereux et nous donnera un gros avantage pour notre propagande religieuse."
+            if administratumEtat:
+                g "Exterminer le poste de l'administratum nous permettra d'éliminer des traces de nos actions et de remettre le repérage à 0."
+            if usineEtat:
+                g "pas fait usine."
+            menu:
+                "Détruire le couvent" if couventSororitasEtat == 1:
+                    "pas fait"
+                    $ couventSororitasEtat = 2
+                    jump fin_bataille_chasse
+                "Détruire le centre administratif" if administratumEtat == 1:
+                    $ niveauReperage = 0
+                    $ administratumEtat = 2
+                    jump fin_bataille_chasse
+                "Détruire l'usine" if usineEtat == 1:
+                    "pas fait"
+                    $ usineEtat = 2
+                    jump fin_bataille_chasse
+                "Mieux vaut être prudent et remettre l'attaque à plus tard":
+                    jump patriarche_genovore
+
+    jump patriarche_genovore
+
+label fin_bataille_chasse:
+    $ pertes_genovores = renpy.random.randint(0, genovores-1)
+    $ genovores -= pertes_genovores
+    $ pertes_contamines = renpy.random.randint(20, 90)
+    $ contamines -= pertes_contamines
+    "pas fait récit de bataille + pertes [pertes_genovores] génovores et [pertes_contamines] contaminés"
 
     jump patriarche_genovore
