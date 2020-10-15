@@ -17,17 +17,40 @@ label preparation_flotte:
     # - troupes de combat classique (des termagants aux carnifex)
     # - adptabilité : permet de garder des réserves pour les cas imprévus, de réinvestir...
 
-
     show screen preparer_flotte
 label texte_investissement:
     # la fonction de maj ci dessus ne marche pas.... à voir plus tard j'espère quand j'aurai des exemples de bar appelant du python
+    scene bg monde_ruche
+    with Dissolve(.5)
+    show prince flingue at left
+    with moveinleft
     p "Investir en infestation génovore rendra plus efficace l'envoi de génovore dans le système visé pour infiltrer la planète et en prendre le contrôle avant même que notre flotte soit arrivée."
+    show genovore face at right
+    with moveinright
     p "À l'heure où nous parlons un vaisseau de l'Imperium contenant des génovores est sur le point de se poser sur cette planète."
     p "Les génovores sont le meilleur moyen d'infester et affaiblir Extremis."
+    g "Vous n'avez qu'un ordre à donner pour que l'infestation commmence, maître."
     p "De plus ils serviront de relais pour nous aider à trouver cette planète que nous ne connaissons que par des informations éparses récoltées dans les cerveaux de récentes victimes."
+
+    scene bg combat_au_sol
+    with Dissolve(.5)
+    show prince flingue at left
+    with moveinleft
     p "Les troupes sont indispensables pour prendre la planète, surtout si les génovores n'ont pas réussi à en prendre le contrôle avant votre arrivée."
+    scene bg combat_spatial
+    with Dissolve(.5)
+    show prince flingue at left
+    with moveinleft
     p "Investir dans la flotte est presque indispensable. Si nous perdions la guerre spatiale il serait très difficile d'atteindre la planète."
+    scene bg titan
+    with Dissolve(.5)
+    show prince flingue at left
+    with moveinleft
     p "Les biotitans sont des monstres gigantesques qui, si nous les déployons, nous assurerons la victoire lors des combats au sol."
+    scene bg tyranisation
+    with Dissolve(.5)
+    show prince flingue at left
+    with moveinleft
     p "Quand nous atteindrons la planète nous y larguerons des milliards de spores et de créatures qui modifieront son environnement pour la rend plus simple à attaquer et digérer tout en rendant la vie impossible aux humains."
     p "Investir en tyranisation rendra cette phase plus efficace."
     p "Elle permettra aussi d'accélérer le processus de conquête et de digestion pour le finir avant l'arrivée de renforts ennemis."

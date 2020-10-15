@@ -1,24 +1,38 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/genovore.rpy", line 230, in script
-    if nbCycleChasse > 8 and if contamines > 100:
-SyntaxError: invalid syntax (game/genovore.rpy, line 230)
+  File "renpy/common/00start.rpy", line 212, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 456, in script
+    python hide:
+  File "renpy/common/00keymap.rpy", line 456, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 466, in _execute_python_hide
+    renpy.load("_reload-2")
+AttributeError: 'StoreModule' object has no attribute 'calculerForce'
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/genovore.rpy", line 230, in script
-    if nbCycleChasse > 8 and if contamines > 100:
-  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\ast.py", line 1832, in execute
-    if renpy.python.py_eval(condition):
-  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\python.py", line 2057, in py_eval
-    code = py_compile(code, 'eval')
-  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\python.py", line 692, in py_compile
-    raise e
-SyntaxError: invalid syntax (game/genovore.rpy, line 230)
+  File "renpy/common/00start.rpy", line 212, in script call
+    call _load_reload_game from _call__load_reload_game_1
+  File "renpy/common/00keymap.rpy", line 456, in script
+    python hide:
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\ast.py", line 914, in execute
+    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\python.py", line 2028, in py_exec_bytecode
+    exec bytecode in globals, locals
+  File "renpy/common/00keymap.rpy", line 456, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 466, in _execute_python_hide
+    renpy.load("_reload-2")
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\loadsave.py", line 769, in load
+    roots, log = loads(location.load(filename))
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\loadsave.py", line 63, in loads
+    return cPickle.loads(s)
+AttributeError: 'StoreModule' object has no attribute 'calculerForce'
 
 Windows-8-6.2.9200
 Ren'Py 7.3.5.606
 Tyranides 1.0
-Tue Oct 13 21:44:15 2020
+Thu Oct 15 19:16:18 2020
