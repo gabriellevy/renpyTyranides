@@ -7,7 +7,7 @@ label genovore:
     show genovore face at left
     # initialisation du génovore et de ses caracs et de son interface
     show screen genovore
-    g "Mes respects, esprit de la ruche. Le vaisseau qui me transportait a enfin aterri sur la planète d'Extremis"
+    g "Mes respects, esprit de la ruche. Le vaisseau qui me transportait a enfin atterri sur la planète d'Extremis"
     g "J'ai su jusqu'ici rester discret, la barre de repérage ci dessus est à zéro. Mais je suis encore enfermé dans le vaisseau qui ne me semble pas avoir atterri dans la ruche même."
     g "Si je veux accomplir ce que mon instinct me crie je dois atteindre la ruche pour y contaminer des humains et la prendre comme base pour infester la planète."
     g "Par contre ce long voyage en hibernation a vidé mes réserves, je suis affamé. Ceci peut se voir dans la barre en haut à gauche."
@@ -79,7 +79,7 @@ label genovore_hors_vaisseau:
     "La cité est nettement visible à l'horizon malgré les brouillards radioactifs qui l'entourent."
     "Son extrémité se perd dans les nuages."
     "Les environs ne sont qu'un misérable désert de cendre où se trouvent quelques bidonvilles sans intérêt. La pollution intense qui vient de la cité usine a anéanti l'environnement."
-    "Peu importe : les humains eux-mêmes y sont innombrables et sont une délicieuse nourriture pour la flotte ruche."
+    "Peu importe : les humains eux-mêmes y sont inombrables et sont une délicieuse nourriture pour la flotte ruche."
     g "La cité est à moins d'une journée de marche. Mais il serait dangereux de voyager à découverte en plein jour."
     menu:
         "Attendre la nuit.":
@@ -88,7 +88,7 @@ label genovore_hors_vaisseau:
             jump genovore_voyage
 
 label genovore_voyage_nuit:
-    "La fin de la journée passe vite et votre trajet nocturne se apsse sans encombre."
+    "La fin de la journée passe vite et votre trajet nocturne se déroule sans encombre."
     "Il fait encore nuit noire quand vous arrivez aux pieds de la ruche."
     $ niveauFaim = niveauFaim + 1
     jump genovore_entree_ruche
