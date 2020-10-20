@@ -152,9 +152,6 @@ label genovore_entree_noblesse:
     $ niveauFaim = niveauFaim + 3
     jump cycle_de_chasse
 
-label test_temp:
-    show screen genovore
-
 label cycle_de_chasse:
     show genovore face at left
     with moveinbottom

@@ -42,6 +42,11 @@ label start:
         # donnees reperage
         inquisiteurPresent = False
 
+        def CycleContamination():
+            global hybridesGen1, hybridesGen2, hybridesGen3, hybridesGen4, genovores
+            text = "youpi du texte"
+            return text
+
         def ajouteReperage(val):
             global niveauReperage, reperageMax
             niveauReperage = niveauReperage + val
@@ -76,7 +81,7 @@ label start:
             if ( investTotal > total ):
                 investAdaptabilite = investAdaptabilite + (investTotal - total)
 
-    #jump test_temp # temp
+    jump test_temp # temp
     jump preparation_flotte # partie 1
 
 # -----------------------------------------> combat spatial à l'approche du système

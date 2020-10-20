@@ -1574,7 +1574,7 @@ screen genovore():
     tag interface_personnage
     frame:
         xpos 5 ypos 5
-        grid 2 5:
+        grid 2 4:
             xsize 210
             spacing 5
             text _("[sante]")
@@ -1587,6 +1587,27 @@ screen genovore():
                 value AnimatedValue(niveauReperage, 100, 1.0)
             text _("Contaminés : [contamines]")
             null
+            text _("Génovores : [genovores]")
+            null
+
+screen patriarche_genovore():
+    tag interface_personnage
+    frame:
+        xpos 5 ypos 5
+        grid 2 6:
+            xsize 210
+            spacing 5
+            text _("Repéré ([niveauReperage]/[reperageMax])")
+            bar:
+                value AnimatedValue(niveauReperage, 100, 1.0)
+            text _("Contaminés : [contamines]")
+            null
+            text _("Hybrides")
+            null
+            text _(" * Gén 1 : [hybridesGen1]")
+            text _(" * Gén 2 : [hybridesGen2]")
+            text _(" * Gén 3 : [hybridesGen3]")
+            text _(" * Gén 4 : [hybridesGen4]")
             text _("Génovores : [genovores]")
             null
 
