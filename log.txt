@@ -1,18 +1,18 @@
-Wed Oct 21 19:49:40 2020
+Wed Oct 21 21:08:00 2020
 Windows-8-6.2.9200
 Ren'Py 7.3.5.606
  
 
-Bootstrap to the start of init.init took 0.07s
+Bootstrap to the start of init.init took 0.08s
 Early init took 0.00s
 Loader init took 0.01s
-Loading error handling took 0.06s
-Loading script took 0.30s
-Loading save slot metadata. took 0.32s
+Loading error handling took 0.02s
+Loading script took 0.17s
+Loading save slot metadata. took 0.02s
 Loading persistent took 0.00s
 Importing _renpysteam: ImportError('No module named _renpysteam',)
-Running init code took 0.12s
-Loading analysis data took 0.04s
+Running init code took 0.07s
+Loading analysis data took 0.03s
 Analyze and compile ATL took 0.00s
 Index archives took 0.00s
 Backing up script files to 'C:\\Users\\Mathieu\\AppData\\Roaming/RenPy/backups\\Tyranides':
@@ -24,8 +24,8 @@ DPI scale factor: 1.000000
 Creating interface object took 0.05s
 Cleaning stores took 0.00s
 Init translation took 0.02s
-Build styles took 0.00s
-Load screen analysis took 0.01s
+Build styles took 0.01s
+Load screen analysis took 0.00s
 Analyze screens took 0.01s
 Save screen analysis took 0.08s
 Prepare screens took 0.06s
@@ -402,11 +402,11 @@ Texture testing:
 - 2048px textures work.
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
-Total time until interface ready: 2.16900014877s
+Total time until interface ready: 1.58500003815s
 - Target is 5 frames in 0.333333333333 seconds.
 - Frame drawn at 0.000000 seconds.
-- Frame drawn at 0.016000 seconds.
-- Frame drawn at 0.031000 seconds.
-- Frame drawn at 0.048000 seconds.
-- Frame drawn at 0.065000 seconds.
-- 0.065000 seconds to render 5 frames.
+- Frame drawn at 0.005000 seconds.
+- Frame drawn at 0.019000 seconds.
+- Frame drawn at 0.035000 seconds.
+- Frame drawn at 0.053000 seconds.
+- 0.053000 seconds to render 5 frames.

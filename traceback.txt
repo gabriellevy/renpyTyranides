@@ -1,38 +1,30 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "renpy/common/00start.rpy", line 212, in script call
-    call _load_reload_game from _call__load_reload_game_1
-  File "renpy/common/00keymap.rpy", line 456, in script
-    python hide:
-  File "renpy/common/00keymap.rpy", line 456, in <module>
-    python hide:
-  File "renpy/common/00keymap.rpy", line 466, in _execute_python_hide
-    renpy.load("_reload-2")
-AttributeError: 'StoreModule' object has no attribute 'calculerForce'
+  File "game/patriarche.rpy", line 36, in script
+    $ textContamination = CycleContamination()
+  File "game/patriarche.rpy", line 36, in <module>
+    $ textContamination = CycleContamination()
+  File "game/script.rpy", line 77, in CycleContamination
+    text = "Nouveaux génovores : " + str(nbNouveauxGenovores)
+UnboundLocalError: local variable 'nbNouveauxGenovores' referenced before assignment
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "renpy/common/00start.rpy", line 212, in script call
-    call _load_reload_game from _call__load_reload_game_1
-  File "renpy/common/00keymap.rpy", line 456, in script
-    python hide:
+  File "game/patriarche.rpy", line 36, in script
+    $ textContamination = CycleContamination()
   File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\ast.py", line 914, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\python.py", line 2028, in py_exec_bytecode
     exec bytecode in globals, locals
-  File "renpy/common/00keymap.rpy", line 456, in <module>
-    python hide:
-  File "renpy/common/00keymap.rpy", line 466, in _execute_python_hide
-    renpy.load("_reload-2")
-  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\loadsave.py", line 769, in load
-    roots, log = loads(location.load(filename))
-  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\loadsave.py", line 63, in loads
-    return cPickle.loads(s)
-AttributeError: 'StoreModule' object has no attribute 'calculerForce'
+  File "game/patriarche.rpy", line 36, in <module>
+    $ textContamination = CycleContamination()
+  File "game/script.rpy", line 77, in CycleContamination
+    text = "Nouveaux génovores : " + str(nbNouveauxGenovores)
+UnboundLocalError: local variable 'nbNouveauxGenovores' referenced before assignment
 
 Windows-8-6.2.9200
 Ren'Py 7.3.5.606
 Tyranides 1.0
-Tue Oct 20 20:46:53 2020
+Wed Oct 21 20:56:17 2020

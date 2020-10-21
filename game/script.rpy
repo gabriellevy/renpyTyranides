@@ -10,6 +10,8 @@ define narrator = Character(what_outlines=[(1, "#3a0505",0,0)], what_italic=True
 label start:
 
     python:
+        import random
+
         niveauFaim = 8
         sante = "En pleine forme"
         niveauReperage = 0
@@ -25,13 +27,14 @@ label start:
 
         # ------------- data génovore
         # suivants génovores
+        cultistes = 0
         contamines = 0
         hybridesGen1 = 0
         hybridesGen2 = 0
         hybridesGen3 = 0
         hybridesGen4 = 0
         genovores = 1
-        forceCulte = 0
+        forceCulte = 0 # puissance de ce culte
         # lieux ruche
         quartier = 2 # basFonds = 1, industriel = 2, noblesse = 3
         couventSororitasEtat = 0 # 0==inconnu; 1==trouvé, 2==détruit, 3==Contrôlé
@@ -44,8 +47,40 @@ label start:
         inquisiteurPresent = False
 
         def CycleContamination():
-            global hybridesGen1, hybridesGen2, hybridesGen3, hybridesGen4, genovores
+            global hybridesGen1, hybridesGen2, hybridesGen3, hybridesGen4, genovores, cultistes, contamines, nbAnneesCulte
             text = "youpi du texte"
+            # génération de la fin au début pour que les nouveaux hybrides ne soient pas pris en compte dans la génération des générations suivantes dans ce cycle
+            dejaHybrides1 = hybridesGen1 != 0
+            dejaHybrides2 = hybridesGen2 != 0
+            dejaHybrides3 = hybridesGen3 != 0
+            dejaHybrides4 = hybridesGen4 != 0
+
+            if nbAnneesCulte > 45:
+                nbNouveauxGenovores = (hybridesGen4 * random.randint(1, 50)/200)
+                genovores += nbNouveauxGenovores
+                nbHybridesGen4 = (hybridesGen3 * random.randint(1, 50)/200)
+                hybridesGen4 += nbHybridesGen4
+            if nbAnneesCulte > 30:
+                nbHybridesGen3 = (hybridesGen2 * random.randint(1, 50)/200)
+                hybridesGen3 += nbHybridesGen3
+            if nbAnneesCulte > 15:
+                nbHybridesGen2 = (hybridesGen1 * random.randint(1, 50)/200)
+                hybridesGen2 += nbHybridesGen2
+            nbHybridesGen1 = (contamines * random.randint(1, 50)/200)
+            hybridesGen1 += nbHybridesGen1
+
+            nbContamines = (cultistes * random.randint(1, 10)/100) + (genovores * random.randint(20, 80))
+            contamines += nbContamines
+            # fin : choix de la phrase à afficher
+            # ajouter détection première création de génovores
+            if not dejaHybrides1 and hybridesGen1 != 0:
+                text = "Maintenant des hybrides génération 1"
+            elif not dejaHybrides2 and hybridesGen2 != 0:
+                text = "Maintenant des hybrides génération 2"
+            elif not dejaHybrides3 and hybridesGen3 != 0:
+                text = "Maintenant des hybrides génération 3"
+            elif not dejaHybrides4 and hybridesGen4 != 0:
+                text = "Maintenant des hybrides génération 4"
             return text
 
         def ajouteReperage(val):

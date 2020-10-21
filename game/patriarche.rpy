@@ -4,7 +4,6 @@ define aco = Character('Acolyte Amalcus Nuthe', who_outlines=[(1, "#28231b",0,0)
 define mg = Character('Dherregau Threndact, Magus', color = "#5b1b11", who_outlines=[(1, "#1b1213",0,0)])
 
 # ------> le genestealer  devient un patriarche et infiltre la planète
-label test_temp:
 label patriarche_genovore:
     # intro
     scene bg egouts
@@ -12,13 +11,13 @@ label patriarche_genovore:
     show patriarche_genovore face at left
     with moveinbottom
     show screen patriarche_genovore
-    # "Vous avez maintenant suffisamment d'adeptes sur cette planète pour les laisser continuer la contamination sans votre action directe."
-    # "Alors que le nombre de vos suivants augmentait vous avez senti votre taille s'accroître, vos griffes s'allonger."
-    # "Mais surtout vous avez senti votre crâne et vos pouvoirs psychiques devenir démesurés."
-    # "À présent vous ne devez plus prendre le risque de sortir de votre repaire au fonds des égoûts. Votre vie est trop précieuse pour l'esprit de la ruche."
-    # "Vous êtes maintenant un patriarche Génovore et votre destin est de régner sur ce monde."
-    # pg "pas fait"
+    "Vous avez maintenant suffisamment d'adeptes sur cette planète pour les laisser continuer la contamination sans votre action directe."
+    "Alors que le nombre de vos suivants augmentait vous avez senti votre taille s'accroître, vos griffes s'allonger."
+    "Mais surtout vous avez senti votre crâne et vos pouvoirs psychiques devenir démesurés."
+    "À présent vous ne devez plus prendre le risque de sortir de votre repaire au fonds des égoûts. Votre vie est trop précieuse pour l'esprit de la ruche."
+    "Vous êtes maintenant un patriarche Génovore et votre destin est de régner sur ce monde."
 
+label test_temp:
 label debut_cycle:
     scene bg egouts
     with Dissolve(.5)
@@ -27,7 +26,7 @@ label debut_cycle:
     show screen patriarche_genovore
 
 label choix_priorites_cycle:
-    pg "ici on choisit ce qui sera la priorité du culte durant ce sycle (pas fait)"
+    pg "ici on choisit ce qui sera la priorité du culte durant ce cycle (pas fait)"
 
 label cycle_de_contamination:
     # == reproduction
@@ -42,6 +41,7 @@ label phase_extension_culte:
 
 label generation_creatures_culte:
     pg "Création créatures : magus, Primus etc..."
+    jump phase_reperage
 
 label creation_magus:
     "Votre emprise sur la planète et le nombre de vos hybrides de quatrième génération a enfin permis le passage de votre culte à un stade essentiel : "

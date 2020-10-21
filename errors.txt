@@ -2,9 +2,8 @@
 errors listed below, and try again.
 
 
-The label fin_chasse is defined twice, at
-  File "game/genovore.rpy", line 241 and
-  File "game/genovore.rpy", line 270.
+File "game/script.rpy", line 73: is not terminated with a newline. (Check strings and parenthesis.)
+                nbContamines = (cultistes * random.randint(1, 10)/100) + (genovores * random.randint(20, 80)
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Tue Oct 13 21:40:38 2020
+Wed Oct 21 20:45:55 2020
