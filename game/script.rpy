@@ -39,6 +39,7 @@ label start:
         usineEtat = 0
         # donnees chasse
         nbCycleChasse = 0
+        nbAnneesCulte = 0 # temps depuis quand le culte a été créé
         # donnees reperage
         inquisiteurPresent = False
 

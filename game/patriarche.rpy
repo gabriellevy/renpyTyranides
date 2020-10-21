@@ -6,6 +6,7 @@ define mg = Character('Dherregau Threndact, Magus', color = "#5b1b11", who_outli
 # ------> le genestealer  devient un patriarche et infiltre la planète
 label test_temp:
 label patriarche_genovore:
+    # intro
     scene bg egouts
     with Dissolve(.5)
     show patriarche_genovore face at left
@@ -18,27 +19,29 @@ label patriarche_genovore:
     # "Vous êtes maintenant un patriarche Génovore et votre destin est de régner sur ce monde."
     # pg "pas fait"
 
+label debut_cycle:
+    scene bg egouts
+    with Dissolve(.5)
+    show patriarche_genovore face at left
+    with moveinbottom
+    show screen patriarche_genovore
+
+label choix_priorites_cycle:
+    pg "ici on choisit ce qui sera la priorité du culte durant ce sycle (pas fait)"
+
 label cycle_de_contamination:
+    # == reproduction
+    # https://omnis-bibliotheca.com/index.php/Cat%C3%A9gorie:Cultes_Genestealers section "La Création d'un Culte" pour image et description hybrides
+    # Hybrides gen 3 : prise de contrôle des usines et autres endroits qui peuvent être communautarisés avec l'aide des contaminés
+    # Hybrides gen 4 : infiltration sérieuse peut commencer
     $ textContamination = CycleContamination()
     pg "[textContamination]"
 
-label reperage:
-    # effets si la jauge "repérage" est pleine (ou si la rébellion est lancée)
-    # - avertissement quand elle est à moitié pleine avec conseils + inquisiteur arrivé => rend tout plus dangereux, possibilités de l'éliminer/contaminer...
-    # - grosse purge Imperium : beaucoup des infiltrés sont tués (cf https://omnis-bibliotheca.com/index.php/Cat%C3%A9gorie:Cultes_Genestealers)
-    # annonces des premières naissances de chaque génération (environ tous les 15 ans sauf peut-être la première génération 2 ans)
-    # ajouter carac "respectabilité du culte" qui apporte des cultes mêmes sur les planètes étrangères et permet de créer des monuments légaux, baisse le repérage
+label phase_extension_culte:
+    pg "plus de cultistes"
 
-label hybrides_gen1:
-    # https://omnis-bibliotheca.com/index.php/Cat%C3%A9gorie:Cultes_Genestealers section "La Création d'un Culte" pour image et description hybrides
-
-label hybrides_gen2:
-
-label hybrides_gen3:
-    # prise de contrôle des usines et autres endroits qui peuvent être communautarisés avec l'aide des contaminés
-
-label hybrides_gen4:
-    # infiltration sérieuse peut commencer
+label generation_creatures_culte:
+    pg "Création créatures : magus, Primus etc..."
 
 label creation_magus:
     "Votre emprise sur la planète et le nombre de vos hybrides de quatrième génération a enfin permis le passage de votre culte à un stade essentiel : "
@@ -54,8 +57,28 @@ label creation_magus:
     mg "Je suis à votre service, DIeu vivant venu des étoiles."
     mg "Ordonnez j'obéirai."
 
+label phase_reperage:
+    "est-ce que le culte se fait repérer ? (pas fait)"
+    # effets si la jauge "repérage" est pleine (ou si la rébellion est lancée)
+    # - avertissement quand elle est à moitié pleine avec conseils + inquisiteur arrivé => rend tout plus dangereux, possibilités de l'éliminer/contaminer...
+    # - grosse purge Imperium : beaucoup des infiltrés sont tués (cf https://omnis-bibliotheca.com/index.php/Cat%C3%A9gorie:Cultes_Genestealers)
+    # annonces des premières naissances de chaque génération (environ tous les 15 ans sauf peut-être la première génération 2 ans)
+    # ajouter carac "respectabilité du culte" qui apporte des cultes mêmes sur les planètes étrangères et permet de créer des monuments légaux, baisse le repérage
+
+label enquete_culte:
+    pg "si suffisament repéré"
+
+label temps_passe_culte:
+    $ nbAnneesCulte = nbAnneesCulte + 1
+    "fin du cycle (à virer) nbAnneesCulte : [nbAnneesCulte]"
+    jump debut_cycle
+
+# -----------------------------------------> à partir d'ici les événements exceptinnels qui ne sont pas partie du cycle :
 label preparation_revolte:
     # capture de véhicules militaires et industriels
+
+label extermination_culte:
+    pg "L'arbites et/ou les space marines arrivent... ouch (pas fait)"
 
 label celebration_culte:
     # je ne sais pas encore trop où je caserai ça... => mais ça serait cool pour l'ambiance, dans un evt aléatoire qui augmente els convertis par exemple
@@ -68,6 +91,6 @@ label revolte_culte:
     # Intervention space marine ? (en tout cas si repérage élevé)
 
 
-    pg "appel de la flotte ruche"
+    pg "finalement appel de la flotte ruche"
 
     jump combat_spatial
