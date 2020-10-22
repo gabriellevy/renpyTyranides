@@ -34,11 +34,15 @@ label choix_priorites_cycle:
             $ prioritePatrarche = prioritePatrarcheExtensionCulte
             jump cycle_de_contamination
         "Favoriser la discrétion, cacher vos cultistes, corrompre les témoins, infiltrer la société" if niveauReperage > 10:
+            $ prioritePatrarche = prioritePatrarcheDiscretion
             $ culteSournois += renpy.random.randint(1, 15)
             $ niveauReperage -= renpy.random.randint(1, 10)
             jump cycle_de_contamination
         "Éxterminer les témoins" if niveauReperage > 30 and genovores > 3:
             jump exterminer_les_temoins
+        "Essayer de contaminer le maximum d'humains":
+            $ prioritePatrarche = prioritePatrarcheContamination
+            jump cycle_de_contamination
 
 label exterminer_les_temoins:
     # TODO MATHIEU : ajouter un peu de random, des risques d'échec et de pertes ?
@@ -113,11 +117,10 @@ label phase_reperage:
         pg "[texteReperage]"
 
 label enquete_culte:
-    pg "si suffisament repéré"
+    pg "pas fait : si suffisament repéré"
 
 label temps_passe_culte:
     $ nbAnneesCulte = nbAnneesCulte + 1
-    "fin du cycle (à virer) nbAnneesCulte : [nbAnneesCulte]"
     jump debut_cycle
 
 # -----------------------------------------> à partir d'ici les événements exceptinnels qui ne sont pas partie du cycle :

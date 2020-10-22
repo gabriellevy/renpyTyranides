@@ -48,7 +48,8 @@ label start:
         prioritePatrarche = -1 # vraie priorité
         # début d'un genre d'enum 'prioritePatrarche'
         prioritePatrarcheExtensionCulte = 0
-        prioritePatrarcheDiscretion = 0
+        prioritePatrarcheDiscretion = 1
+        prioritePatrarcheContamination = 2
         # lieux ruche
         quartier = 2 # basFonds = 1, industriel = 2, noblesse = 3
         couventSororitasEtat = 0 # 0==inconnu; 1==trouvé, 2==détruit, 3==Contrôlé
@@ -62,6 +63,7 @@ label start:
 
         def CycleReperageCulte():
             global hybridesGen1, hybridesGen2, hybridesGen3, hybridesGen4, genovores, cultistes, contamines, nbAnneesCulte, niveauReperage, reperageMax
+            global enqueteArbites, enqueteInquisition
             tailleCulte = hybridesGen1 + hybridesGen2 + hybridesGen3 + hybridesGen4 + genovores + cultistes + contamines
             ajoutReperage = random.randint(0, 5)
             maxBonusReperage = 0
@@ -97,7 +99,7 @@ label start:
             return ""
 
         def CycleContamination():
-            global hybridesGen1, hybridesGen2, hybridesGen3, hybridesGen4, genovores, cultistes, contamines, nbAnneesCulte
+            global hybridesGen1, hybridesGen2, hybridesGen3, hybridesGen4, genovores, cultistes, contamines, nbAnneesCulte, prioritePatrarche, prioritePatrarcheContamination
             text = ""
             # génération de la fin au début pour que les nouveaux hybrides ne soient pas pris en compte dans la génération des générations suivantes dans ce cycle
             dejaHybrides1 = hybridesGen1 != 0
@@ -120,6 +122,8 @@ label start:
             hybridesGen1 += nbHybridesGen1
 
             nbContamines = (cultistes * random.randint(1, 10)/100) + (genovores * random.randint(20, 80))
+            if prioritePatrarche == prioritePatrarcheContamination:
+                nbContamines += random.randint(50, 500)
             contamines += nbContamines
             # fin : choix de la phrase à afficher
             # ajouter détection première création de génovores
