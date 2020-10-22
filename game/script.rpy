@@ -35,6 +35,9 @@ label start:
         hybridesGen4 = 0
         genovores = 1
         forceCulte = 0 # puissance de ce culte
+        # culte religieux
+        culteCree = False # création du culte (au niveau religieux)
+        nomCulte = ""
         # lieux ruche
         quartier = 2 # basFonds = 1, industriel = 2, noblesse = 3
         couventSororitasEtat = 0 # 0==inconnu; 1==trouvé, 2==détruit, 3==Contrôlé

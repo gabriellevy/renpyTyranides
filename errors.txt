@@ -2,8 +2,13 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 73: is not terminated with a newline. (Check strings and parenthesis.)
-                nbContamines = (cultistes * random.randint(1, 10)/100) + (genovores * random.randint(20, 80)
+File "game/patriarche.rpy", line 39: expected statement.
+    nomCulte = renpy.input("Comment voulez vous nommez votre culte ?")
+             ^
+
+File "game/patriarche.rpy", line 40: expected statement.
+    nomCulte = nomCulte.strip() or "La spirale mystique"
+             ^
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Wed Oct 21 20:45:55 2020
+Thu Oct 22 13:39:17 2020

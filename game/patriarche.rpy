@@ -26,7 +26,21 @@ label debut_cycle:
     show screen patriarche_genovore
 
 label choix_priorites_cycle:
-    pg "ici on choisit ce qui sera la priorité du culte durant ce cycle (pas fait)"
+    menu:
+        "Quel sera votre priorité cette année patriarche ?"
+        "Créer un culte religieux me vénérant comme un dieu" if not culteCree:
+            jump creation_culte
+        "Étendre le culte par la propagande" if culteCree:
+            pg "Le culte s'étend (pas fait)"
+            jump cycle_de_contamination
+
+label creation_culte:
+    $ culteCree = True
+    python:
+        nomCulte = renpy.input("Comment voulez vous nommez votre culte ?")
+        nomCulte = nomCulte.strip() or "La spirale mystique"
+    pg "Le culte [nomCulte] est créé et déjà vos contaminés se chargent de recruter des adeptes et de répandre la bonne parole des étoiles."
+    jump cycle_de_contamination
 
 label cycle_de_contamination:
     # == reproduction
@@ -37,7 +51,7 @@ label cycle_de_contamination:
     pg "[textContamination]"
 
 label phase_extension_culte:
-    pg "plus de cultistes"
+    pg "Si le culte a été créé - plus de cultistes ?  (pas fait)"
 
 label generation_creatures_culte:
     pg "Création créatures : magus, Primus etc..."

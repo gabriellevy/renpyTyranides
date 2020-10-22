@@ -1597,9 +1597,6 @@ screen patriarche_genovore():
         grid 2 6:
             xsize 210
             spacing 5
-            text _("Repéré ([niveauReperage]/[reperageMax])")
-            bar:
-                value AnimatedValue(niveauReperage, 100, 1.0)
             text _("Contaminés : [contamines]")
             null
             text _("Hybrides")
@@ -1610,6 +1607,9 @@ screen patriarche_genovore():
             text _(" * Gén 4 : [hybridesGen4]")
             text _("Génovores : [genovores]")
             null
+            text _("Repéré ([niveauReperage]/[reperageMax])")
+            bar:
+                value AnimatedValue(niveauReperage, 100, 1.0)
 
 screen invasion_planetaire():
     tag interface_personnage
