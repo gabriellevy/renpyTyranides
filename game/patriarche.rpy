@@ -33,6 +33,10 @@ label choix_priorites_cycle:
         "Étendre le culte par la propagande" if culteCree:
             $ prioritePatrarche = prioritePatrarcheExtensionCulte
             jump cycle_de_contamination
+        "Favoriser la discrétion, cacher vos cultistes, corrompre les témoins, infiltrer la société":
+            $ culteSournois += renpy.random.randint(1, 15)
+            $ niveauReperage -= renpy.random.randint(1, 15)
+            jump cycle_de_contamination
 
 label creation_culte:
     $ culteCree = True
@@ -56,10 +60,21 @@ label phase_extension_culte:
         pg "[texteExtensionCulte]"
 
 label generation_creatures_culte:
-    pg "Création créatures : magus, Primus etc..."
+    if culteViolent > 50:
+        $ culteViolent = 0
+        jump creation_primus
+    elif culteSournois > 50:
+        $ culteSournois = 0
+        jump creation_magus
+    jump phase_reperage
+
+label creation_primus:
+    $ nbPrimus += 1
+    pg "Création primus : pas fait"
     jump phase_reperage
 
 label creation_magus:
+    $ nbMagus += 1
     "Votre emprise sur la planète et le nombre de vos hybrides de quatrième génération a enfin permis le passage de votre culte à un stade essentiel : "
     with Dissolve(.5)
     show magus face at right
@@ -72,6 +87,7 @@ label creation_magus:
     mg "Un ost d’anges à l’image des véritables maîtres de cette galaxie ! Une panoplie de dieux pour qui rien n’est hors de portée !"
     mg "Je suis à votre service, DIeu vivant venu des étoiles."
     mg "Ordonnez j'obéirai."
+    jump phase_reperage
 
 label phase_reperage:
     "est-ce que le culte se fait repérer ? (pas fait)"

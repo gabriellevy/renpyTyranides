@@ -25,7 +25,7 @@ label start:
         investTyranisation = 5
         investAdaptabilite = 5
 
-        # ------------- data génovore
+        # ----------------------- data génovore
         # suivants génovores
         cultistes = 0
         contamines = 0
@@ -36,6 +36,10 @@ label start:
         genovores = 1
         forceCulte = 0 # puissance de ce culte
         nbMagus = 0
+        nbPrimus = 0
+        # ----état général du culte, stratégie etc...
+        culteSournois = 0 # à quel point la stratégie du culte tourne vers la sournoiserie/discrétion
+        culteViolent = 0 # augmente si le culte déclenche beaucoup d'attentats meurtres etc...
         # ---- culte religieux
         culteCree = False # création du culte (au niveau religieux)
         nomCulte = ""

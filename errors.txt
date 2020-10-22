@@ -2,13 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/patriarche.rpy", line 39: expected statement.
-    nomCulte = renpy.input("Comment voulez vous nommez votre culte ?")
-             ^
-
-File "game/patriarche.rpy", line 40: expected statement.
-    nomCulte = nomCulte.strip() or "La spirale mystique"
-             ^
+File "game/patriarche.rpy", line 36: Line is followed by a block, despite not being a menu choice. Did you forget a colon at the end of the line?
+    "Favoriser la discrétion, cacher vos cultistes, corrompre les témoins, infiltrer la société"
+                                                                                                ^
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Thu Oct 22 13:39:17 2020
+Thu Oct 22 19:52:17 2020
