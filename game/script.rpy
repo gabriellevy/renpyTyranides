@@ -35,9 +35,14 @@ label start:
         hybridesGen4 = 0
         genovores = 1
         forceCulte = 0 # puissance de ce culte
-        # culte religieux
+        nbMagus = 0
+        # ---- culte religieux
         culteCree = False # création du culte (au niveau religieux)
         nomCulte = ""
+        prioritePatrarche = -1 # vraie priorité
+        # début d'un genre d'enum 'prioritePatrarche'
+        prioritePatrarcheExtensionCulte = 0
+        prioritePatrarcheDiscretion = 0
         # lieux ruche
         quartier = 2 # basFonds = 1, industriel = 2, noblesse = 3
         couventSororitasEtat = 0 # 0==inconnu; 1==trouvé, 2==détruit, 3==Contrôlé
@@ -85,6 +90,26 @@ label start:
             elif not dejaHybrides4 and hybridesGen4 != 0:
                 text = "Maintenant des hybrides génération 4"
             return text
+
+        def CycleExtensionCulte():
+            global cultistes, couventSororitasEtat, nbMagus, prioritePatrarche, prioritePatrarcheExtensionCulte
+            nbBase = cultistes
+            if nbBase < 3000:
+                nbBase = 3000
+            nouveauxCultistes = random.randint(nbBase/100, nbBase/10)
+            if couventSororitasEtat == 2:
+                nouveauxCultistes += random.randint(0, 200)
+            elif couventSororitasEtat == 3:
+                nouveauxCultistes += random.randint(100, 400)
+            if nbMagus > 0:
+                nouveauxCultistes += (nbMagus * random.randint(0, 100) )
+            if prioritePatrarche == prioritePatrarcheExtensionCulte:
+                nouveauxCultistes += random.randint(200, 500)
+
+            cultistes += nouveauxCultistes
+            if nouveauxCultistes > 500:
+                return "Grâce à une propagande efficace, votre culte fait des progrès considérables."
+            return ""
 
         def ajouteReperage(val):
             global niveauReperage, reperageMax

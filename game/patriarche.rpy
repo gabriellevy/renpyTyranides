@@ -31,13 +31,13 @@ label choix_priorites_cycle:
         "Créer un culte religieux me vénérant comme un dieu" if not culteCree:
             jump creation_culte
         "Étendre le culte par la propagande" if culteCree:
-            pg "Le culte s'étend (pas fait)"
+            $ prioritePatrarche = prioritePatrarcheExtensionCulte
             jump cycle_de_contamination
 
 label creation_culte:
     $ culteCree = True
     python:
-        nomCulte = renpy.input("Comment voulez vous nommez votre culte ?")
+        nomCulte = renpy.input("Comment voulez vous nommer votre culte ?")
         nomCulte = nomCulte.strip() or "La spirale mystique"
     pg "Le culte [nomCulte] est créé et déjà vos contaminés se chargent de recruter des adeptes et de répandre la bonne parole des étoiles."
     jump cycle_de_contamination
@@ -51,7 +51,9 @@ label cycle_de_contamination:
     pg "[textContamination]"
 
 label phase_extension_culte:
-    pg "Si le culte a été créé - plus de cultistes ?  (pas fait)"
+    $ texteExtensionCulte = CycleExtensionCulte()
+    if texteExtensionCulte != "":
+        pg "[texteExtensionCulte]"
 
 label generation_creatures_culte:
     pg "Création créatures : magus, Primus etc..."

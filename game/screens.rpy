@@ -1594,9 +1594,11 @@ screen patriarche_genovore():
     tag interface_personnage
     frame:
         xpos 5 ypos 5
-        grid 2 6:
+        grid 2 7:
             xsize 210
             spacing 5
+            text _("Cultistes : [cultistes]")
+            null
             text _("Contaminés : [contamines]")
             null
             text _("Hybrides")
