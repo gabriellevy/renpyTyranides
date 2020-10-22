@@ -40,6 +40,8 @@ label start:
         # ----état général du culte, stratégie etc...
         culteSournois = 0 # à quel point la stratégie du culte tourne vers la sournoiserie/discrétion
         culteViolent = 0 # augmente si le culte déclenche beaucoup d'attentats meurtres etc...
+        enqueteArbites = False
+        enqueteInquisition = False
         # ---- culte religieux
         culteCree = False # création du culte (au niveau religieux)
         nomCulte = ""
@@ -58,9 +60,45 @@ label start:
         # donnees reperage
         inquisiteurPresent = False
 
+        def CycleReperageCulte():
+            global hybridesGen1, hybridesGen2, hybridesGen3, hybridesGen4, genovores, cultistes, contamines, nbAnneesCulte, niveauReperage, reperageMax
+            tailleCulte = hybridesGen1 + hybridesGen2 + hybridesGen3 + hybridesGen4 + genovores + cultistes + contamines
+            ajoutReperage = random.randint(0, 5)
+            maxBonusReperage = 0
+            if tailleCulte > 1000:
+                maxBonusReperage += 1
+                if tailleCulte > 10000:
+                    maxBonusReperage += 1
+                    if tailleCulte > 50000:
+                        maxBonusReperage += 1
+                        if tailleCulte > 200000:
+                            maxBonusReperage += 1
+                            if tailleCulte > 500000:
+                                maxBonusReperage += 1
+                                if tailleCulte > 1000000:
+                                    maxBonusReperage += 1
+                                    if tailleCulte > 10000000:
+                                        maxBonusReperage += 1
+            ajoutReperage += random.randint(0, maxBonusReperage)
+            niveauReperage += ajoutReperage
+
+            if niveauReperage > reperageMax and not enqueteArbites:
+                niveauReperage = 0
+                enqueteArbites = True
+                return "Votre culte a attiré l'attention de la justice impériale, l'Adeptus Arbites. Il va falloir se faire discret."
+
+            if niveauReperage > reperageMax and enqueteArbites and not enqueteInquisition:
+                niveauReperage = 0
+                enqueteInquisition = True
+                return "Catastrophe. L'inquisition, la plus redoutable entité de l'Imperium humain. Il va falloir jouer serré."
+
+            if ajoutReperage > 8:
+                return "La taille du culte devient un vrai danger. Il devient impossible de passer inaperçu."
+            return ""
+
         def CycleContamination():
             global hybridesGen1, hybridesGen2, hybridesGen3, hybridesGen4, genovores, cultistes, contamines, nbAnneesCulte
-            text = "youpi du texte"
+            text = ""
             # génération de la fin au début pour que les nouveaux hybrides ne soient pas pris en compte dans la génération des générations suivantes dans ce cycle
             dejaHybrides1 = hybridesGen1 != 0
             dejaHybrides2 = hybridesGen2 != 0

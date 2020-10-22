@@ -33,10 +33,22 @@ label choix_priorites_cycle:
         "Étendre le culte par la propagande" if culteCree:
             $ prioritePatrarche = prioritePatrarcheExtensionCulte
             jump cycle_de_contamination
-        "Favoriser la discrétion, cacher vos cultistes, corrompre les témoins, infiltrer la société":
+        "Favoriser la discrétion, cacher vos cultistes, corrompre les témoins, infiltrer la société" if niveauReperage > 10:
             $ culteSournois += renpy.random.randint(1, 15)
-            $ niveauReperage -= renpy.random.randint(1, 15)
+            $ niveauReperage -= renpy.random.randint(1, 10)
             jump cycle_de_contamination
+        "Éxterminer les témoins" if niveauReperage > 30 and genovores > 3:
+            jump exterminer_les_temoins
+
+label exterminer_les_temoins:
+    # TODO MATHIEU : ajouter un peu de random, des risques d'échec et de pertes ?
+    show genovore face at right
+    with moveinright
+    g "Extermination menée à bien, patriarche. Le sang des humains tapîsse les murs. Ils ne parleront plus contre le culte."
+    $ culteSournois += renpy.random.randint(1, 5)
+    $ culteViolent += renpy.random.randint(1, 5)
+    $ niveauReperage -= renpy.random.randint(5, 15)
+    jump cycle_de_contamination
 
 label creation_culte:
     $ culteCree = True
@@ -52,7 +64,8 @@ label cycle_de_contamination:
     # Hybrides gen 3 : prise de contrôle des usines et autres endroits qui peuvent être communautarisés avec l'aide des contaminés
     # Hybrides gen 4 : infiltration sérieuse peut commencer
     $ textContamination = CycleContamination()
-    pg "[textContamination]"
+    if textContamination != "":
+        pg "[textContamination]"
 
 label phase_extension_culte:
     $ texteExtensionCulte = CycleExtensionCulte()
@@ -60,10 +73,10 @@ label phase_extension_culte:
         pg "[texteExtensionCulte]"
 
 label generation_creatures_culte:
-    if culteViolent > 50:
+    if culteViolent > 50 and hybridesGen4 > 0:
         $ culteViolent = 0
         jump creation_primus
-    elif culteSournois > 50:
+    elif culteSournois > 50 and hybridesGen4 > 0:
         $ culteSournois = 0
         jump creation_magus
     jump phase_reperage
@@ -90,12 +103,14 @@ label creation_magus:
     jump phase_reperage
 
 label phase_reperage:
-    "est-ce que le culte se fait repérer ? (pas fait)"
     # effets si la jauge "repérage" est pleine (ou si la rébellion est lancée)
     # - avertissement quand elle est à moitié pleine avec conseils + inquisiteur arrivé => rend tout plus dangereux, possibilités de l'éliminer/contaminer...
     # - grosse purge Imperium : beaucoup des infiltrés sont tués (cf https://omnis-bibliotheca.com/index.php/Cat%C3%A9gorie:Cultes_Genestealers)
     # annonces des premières naissances de chaque génération (environ tous les 15 ans sauf peut-être la première génération 2 ans)
     # ajouter carac "respectabilité du culte" qui apporte des cultes mêmes sur les planètes étrangères et permet de créer des monuments légaux, baisse le repérage
+    $ texteReperage = CycleReperageCulte()
+    if texteReperage != "":
+        pg "[texteReperage]"
 
 label enquete_culte:
     pg "si suffisament repéré"
