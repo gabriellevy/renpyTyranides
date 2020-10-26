@@ -1,4 +1,4 @@
-Thu Oct 22 22:31:38 2020
+Mon Oct 26 20:41:31 2020
 Windows-8-6.2.9200
 Ren'Py 7.3.5.606
  
@@ -16,7 +16,7 @@ Loading analysis data took 0.02s
 Analyze and compile ATL took 0.00s
 Index archives took 0.00s
 Backing up script files to 'C:\\Users\\Mathieu\\AppData\\Roaming/RenPy/backups\\Tyranides':
-Dump and make backups. took 0.09s
+Dump and make backups. took 0.11s
 Cleaning cache took 0.00s
 Making clean stores took 0.00s
 Initial gc. took 0.02s
@@ -27,7 +27,7 @@ Init translation took 0.02s
 Build styles took 0.00s
 Load screen analysis took 0.00s
 Analyze screens took 0.01s
-Save screen analysis took 0.08s
+Save screen analysis took 0.07s
 Prepare screens took 0.06s
 Save pyanalysis. took 0.00s
 Save bytecode. took 0.07s
@@ -402,33 +402,6 @@ Texture testing:
 - 2048px textures work.
 Root FBO is: 0
 FBO Maximum Texture Size: 2048
-Total time until interface ready: 1.69599986076s
+Total time until interface ready: 1.6970000267s
 - Target is 5 frames in 0.333333333333 seconds.
-- Frame drawn at 0.000000 seconds.
-- Frame drawn at 0.012000 seconds.
-- Frame drawn at 0.027000 seconds.
-- Frame drawn at 0.044000 seconds.
-- Frame drawn at 0.061000 seconds.
-- 0.061000 seconds to render 5 frames.
-
-Full traceback:
-  File "game/patriarche.rpy", line 115, in script
-    $ texteReperage = CycleReperageCulte()
-  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\ast.py", line 914, in execute
-    renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
-  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\python.py", line 2028, in py_exec_bytecode
-    exec bytecode in globals, locals
-  File "game/patriarche.rpy", line 115, in <module>
-    $ texteReperage = CycleReperageCulte()
-  File "game/script.rpy", line 86, in CycleReperageCulte
-    if niveauReperage > reperageMax and not enqueteArbites:
-UnboundLocalError: local variable 'enqueteArbites' referenced before assignment
-
-While running game code:
-  File "game/patriarche.rpy", line 115, in script
-    $ texteReperage = CycleReperageCulte()
-  File "game/patriarche.rpy", line 115, in <module>
-    $ texteReperage = CycleReperageCulte()
-  File "game/script.rpy", line 86, in CycleReperageCulte
-    if niveauReperage > reperageMax and not enqueteArbites:
-UnboundLocalError: local variable 'enqueteArbites' referenced before assignment
+- Frame drawn at 0.000000 secon

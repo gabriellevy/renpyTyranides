@@ -67,9 +67,39 @@ label cycle_de_contamination:
     # https://omnis-bibliotheca.com/index.php/Cat%C3%A9gorie:Cultes_Genestealers section "La Création d'un Culte" pour image et description hybrides
     # Hybrides gen 3 : prise de contrôle des usines et autres endroits qui peuvent être communautarisés avec l'aide des contaminés
     # Hybrides gen 4 : infiltration sérieuse peut commencer
-    $ textContamination = CycleContamination()
-    if textContamination != "":
-        pg "[textContamination]"
+    $ resContamination = CycleContamination()
+    if resContamination == "gen1":
+        "Une fois qu’un humain a été infecté, le matériel génétique du Genestealer se met à l’œuvre dans son système biologique."
+        "L’instinct dominant du Genestealer, qui est de propager son espèce influe subtilement les pensées de l’hôte génétique, et celui-ci fera tout son possible pour fonder une famille."
+        "Son premier né est un Hybride de première génération, mi-homme, mi-Genestealer, et en vérité à peine reconnaissable comme un enfant humain."
+        "Les parents semblent tout à fait indifférent à la vraie nature de leur progéniture."
+        "Ils dissimulent l’Hybride pour sa sécurité et le traitent comme s’il était un enfant normal."
+        "L’affection naturelle des parents se combine avec l’instinct primordial de défendre leur enfant qui est protégé de tout danger même s’il n’est visiblement pas humain."
+        "La famille peut concevoir d’autres enfants, mais ce seront des humains normaux : chaque humain infecté ne peut produire qu’un unique rejeton porteur de gènes Genestealers et c’est invariablement le premier-né."
+    elif resContamination == "gen2":
+        show hybride_gen1 attaque at right
+        with moveinright
+        "Les Hybrides de première génération ont grandi jusqu’à maturité, toujours cachés dans la communauté, et ont infecté à leur tour des humains, de la même manière que le Génovore qui infecta leurs parents."
+        "Le processus est répété et la seconde génération d’Hybrides naît."
+        "Toujours profondément alien, et presque toujours pourvue de trois bras."
+        "Des traits humains commencent tout de même à prendre le dessus pour le visage ou la posture."
+    elif resContamination == "gen3":
+        show hybride_gen1 attaque at right
+        "Les Hybrides de deuxième génération ont grandi jusqu’à maturité, toujours cachés dans la communauté pour ne pas révéler leur évidente nature alien."
+        "Le processus se poursuit pour la nouvelle génération d’Hybrides, séparés par une génération de parents humains."
+        "De cette manière, chaque Hybride a une fratrie, qui ressent à la fois la loyauté humaine normale envers leur étrange frère et le lien primal d’une race Xenos dont les gênes sont intimement liés aux siens."
+        "Pouvant difficilement passer pour des humains, les Hybrides de seconde génération utilisent les mêmes techniques que ceux de la première pour transmettre leur gène et donner naissance à la troisième génération."
+
+    elif resContamination == "gen4":
+        "La troisième génération infecte d'une façon ou d’une autres des prisonniers endoctrinés, produisant ainsi la quatrième génération qu’il est difficile de différencier des humains normaux au premier abord."
+        "Cependant, un Hybride garde toujours les instincts primaires des Genestealers ;"
+        "cela est toujours implanté dans leur structure génétique, et peu importe leur apparence humaine, les Hybrides appartiennent à la lignée des Genestealers."
+        "C’est ce qui rend de nombreuses façons la dernière génération d’Hybrides la plus dangereuse : "
+        "ils peuvent se déplacer librement parmi les humains, transmettant discrètement leur terrible infection et prenant le contrôle des plus importantes organisations en accédant aux postes clés."
+
+    elif resContamination == "genovore":
+        "La quatrième génération se reproduit avec la population locale et engendre des Genestealers."
+        "La boucle est bouclée."
 
 label phase_extension_culte:
     $ texteExtensionCulte = CycleExtensionCulte()

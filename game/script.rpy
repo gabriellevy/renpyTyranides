@@ -34,6 +34,7 @@ label start:
         hybridesGen3 = 0
         hybridesGen4 = 0
         genovores = 1
+        aberrations = 0 # pas faits (= monstres mal créés mais balaises)
         forceCulte = 0 # puissance de ce culte
         nbMagus = 0
         nbPrimus = 0
@@ -62,9 +63,10 @@ label start:
         inquisiteurPresent = False
 
         def CycleReperageCulte():
-            global hybridesGen1, hybridesGen2, hybridesGen3, hybridesGen4, genovores, cultistes, contamines, nbAnneesCulte, niveauReperage, reperageMax
+            global hybridesGen1, hybridesGen2, hybridesGen3, hybridesGen4, genovores, cultistes, contamines, nbAnneesCulte, niveauReperage, reperageMax, aberrations
             global enqueteArbites, enqueteInquisition
-            tailleCulte = hybridesGen1 + hybridesGen2 + hybridesGen3 + hybridesGen4 + genovores + cultistes + contamines
+            # tailleCulte == visibilité du culte, les hybrides comptent plus que les génération 4 par exemple
+            tailleCulte = aberrations * 3 + hybridesGen1 * 2 + hybridesGen2 * 2 + hybridesGen3 + hybridesGen4 * 0.5 + genovores + cultistes * 0.1 + contamines * 0.1
             ajoutReperage = random.randint(0, 5)
             maxBonusReperage = 0
             if tailleCulte > 1000:
@@ -106,6 +108,7 @@ label start:
             dejaHybrides2 = hybridesGen2 != 0
             dejaHybrides3 = hybridesGen3 != 0
             dejaHybrides4 = hybridesGen4 != 0
+            nbNouveauxGenovores = 0
 
             if nbAnneesCulte > 45:
                 nbNouveauxGenovores = (hybridesGen4 * random.randint(1, 50)/200)
@@ -126,15 +129,17 @@ label start:
                 nbContamines += random.randint(50, 500)
             contamines += nbContamines
             # fin : choix de la phrase à afficher
-            # ajouter détection première création de génovores
+            # ---------> ajouter détection première création de génovores
             if not dejaHybrides1 and hybridesGen1 != 0:
-                text = "Maintenant des hybrides génération 1"
+                text = "gen1"
             elif not dejaHybrides2 and hybridesGen2 != 0:
-                text = "Maintenant des hybrides génération 2"
+                text = "gen2"
             elif not dejaHybrides3 and hybridesGen3 != 0:
-                text = "Maintenant des hybrides génération 3"
+                text = "gen3"
             elif not dejaHybrides4 and hybridesGen4 != 0:
-                text = "Maintenant des hybrides génération 4"
+                text = "gen4"
+            elif nbAnneesCulte == 46 and nbNouveauxGenovores != 0:
+                text = "genovore"
             return text
 
         def CycleExtensionCulte():
