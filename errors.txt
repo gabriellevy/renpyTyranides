@@ -2,10 +2,9 @@
 errors listed below, and try again.
 
 
-File "game/script.rpy", line 68: invalid syntax
-        // tailleCulte == visibilité du culte, les hybrides comptent plus que les génération 4 par exemple
-          ^
-    
+File "game/patriarche.rpy", line 48: reached end of line when expecting ':'.
+    "Lancer la révolte planétaire" if nbPrimus > 0
+                                                  ^
 
 Ren'Py Version: Ren'Py 7.3.5.606
-Mon Oct 26 19:32:02 2020
+Wed Nov 04 21:55:19 2020

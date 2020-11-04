@@ -1574,7 +1574,7 @@ screen genovore():
     tag interface_personnage
     frame:
         xpos 5 ypos 5
-        grid 2 4:
+        grid 2 5:
             xsize 210
             spacing 5
             text _("[sante]")

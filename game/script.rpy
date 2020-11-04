@@ -196,7 +196,7 @@ label start:
             if ( investTotal > total ):
                 investAdaptabilite = investAdaptabilite + (investTotal - total)
 
-    jump test_temp # temp
+    # jump test_temp # temp
     jump preparation_flotte # partie 1
 
 # -----------------------------------------> combat spatial à l'approche du système

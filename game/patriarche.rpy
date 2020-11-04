@@ -38,11 +38,28 @@ label choix_priorites_cycle:
             $ culteSournois += renpy.random.randint(1, 15)
             $ niveauReperage -= renpy.random.randint(1, 10)
             jump cycle_de_contamination
-        "Éxterminer les témoins" if niveauReperage > 30 and genovores > 3:
+        "Exterminer les témoins" if niveauReperage > 30 and genovores > 3:
             jump exterminer_les_temoins
         "Essayer de contaminer le maximum d'humains":
             $ prioritePatrarche = prioritePatrarcheContamination
             jump cycle_de_contamination
+        "Envoyer des éclaireurs dans les autres régions de la planète" if hybridesGen4 > 0:
+            jump repandre_eclaireurs
+        "Lancer la révolte planétaire" if nbPrimus > 0:
+            jump revolte_genovore
+
+label revolte_genovore:
+    # ajouter des conditions en plus de la nécessité du primus ?
+    "Révolte : pas fait"
+
+label repandre_eclaireurs:
+    # TODO : ajouter une image de cultistes à moto ou autre véhicule ?
+    "Vos cultistes les plus motivés partent sur divers véhicules légers répandre le culte au travers du monde."
+    "Cela va grandement accélérer la contamination mais rendra aussi bien plus dur de rester discret."
+    $ cultistes += renpy.random.randint(100, 500)
+    $ contamines += renpy.random.randint(10, 200)
+    $ niveauReperage += renpy.random.randint(5, 20)
+    jump cycle_de_contamination
 
 label exterminer_les_temoins:
     # TODO MATHIEU : ajouter un peu de random, des risques d'échec et de pertes ?

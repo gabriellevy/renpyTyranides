@@ -1,30 +1,38 @@
 ﻿I'm sorry, but an uncaught exception occurred.
 
 While running game code:
-  File "game/patriarche.rpy", line 115, in script
-    $ texteReperage = CycleReperageCulte()
-  File "game/patriarche.rpy", line 115, in <module>
-    $ texteReperage = CycleReperageCulte()
-  File "game/script.rpy", line 86, in CycleReperageCulte
-    if niveauReperage > reperageMax and not enqueteArbites:
-UnboundLocalError: local variable 'enqueteArbites' referenced before assignment
+  File "renpy/common/00keymap.rpy", line 421, in script
+    python hide:
+  File "renpy/common/00keymap.rpy", line 421, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 440, in _execute_python_hide
+    renpy.save("_reload-1", "reload save game")
+Exception: Could not pickle <module 'random' from 'D:\Dev\Renpy\renpy-7.3.5-sdk\lib\pythonlib2.7\random.pyo'>. (perhaps store.random = <module 'random' from 'D:\Dev\Renpy\renpy-7.3.5-sdk\lib\pythonlib2.7\random.pyo'>)
 
 -- Full Traceback ------------------------------------------------------------
 
 Full traceback:
-  File "game/patriarche.rpy", line 115, in script
-    $ texteReperage = CycleReperageCulte()
+  File "renpy/common/00keymap.rpy", line 421, in script
+    python hide:
   File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\ast.py", line 914, in execute
     renpy.python.py_exec_bytecode(self.code.bytecode, self.hide, store=self.store)
   File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\python.py", line 2028, in py_exec_bytecode
     exec bytecode in globals, locals
-  File "game/patriarche.rpy", line 115, in <module>
-    $ texteReperage = CycleReperageCulte()
-  File "game/script.rpy", line 86, in CycleReperageCulte
-    if niveauReperage > reperageMax and not enqueteArbites:
-UnboundLocalError: local variable 'enqueteArbites' referenced before assignment
+  File "renpy/common/00keymap.rpy", line 421, in <module>
+    python hide:
+  File "renpy/common/00keymap.rpy", line 440, in _execute_python_hide
+    renpy.save("_reload-1", "reload save game")
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\loadsave.py", line 422, in save
+    six.reraise(t, e, tb)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\loadsave.py", line 405, in save
+    dump((roots, renpy.game.log), logf)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\loadsave.py", line 49, in dump
+    cPickle.dump(o, f, cPickle.HIGHEST_PROTOCOL)
+  File "D:\Dev\Renpy\renpy-7.3.5-sdk\renpy\python.py", line 2122, in module_pickle
+    raise Exception("Could not pickle {!r}.".format(module))
+Exception: Could not pickle <module 'random' from 'D:\Dev\Renpy\renpy-7.3.5-sdk\lib\pythonlib2.7\random.pyo'>. (perhaps store.random = <module 'random' from 'D:\Dev\Renpy\renpy-7.3.5-sdk\lib\pythonlib2.7\random.pyo'>)
 
 Windows-8-6.2.9200
 Ren'Py 7.3.5.606
 Tyranides 1.0
-Thu Oct 22 22:38:12 2020
+Wed Nov 04 21:58:31 2020

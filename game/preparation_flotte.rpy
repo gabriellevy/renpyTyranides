@@ -29,7 +29,7 @@ label texte_investissement:
     with moveinright
     p "À l'heure où nous parlons un vaisseau de l'Imperium contenant des génovores est sur le point de se poser sur cette planète."
     p "Les génovores sont le meilleur moyen d'infester et affaiblir Extremis."
-    g "Vous n'avez qu'un ordre à donner pour que l'infestation commmence, maître."
+    g "Vous n'avez qu'un ordre à donner pour que l'infestation commence, maître."
     p "De plus ils serviront de relais pour nous aider à trouver cette planète que nous ne connaissons que par des informations éparses récoltées dans les cerveaux de récentes victimes."
 
     scene bg combat_au_sol
