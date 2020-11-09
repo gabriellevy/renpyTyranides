@@ -17,6 +17,7 @@ label start:
         niveauReperage = 0
         reperageMax = 100
 
+        # investissemet général
         investTotal = 25
         investInfestation = 5
         investTroupes = 5
@@ -35,14 +36,14 @@ label start:
         hybridesGen4 = 0
         genovores = 1
         aberrations = 0 # pas faits (= monstres mal créés mais balaises)
-        forceCulte = 0 # puissance de ce culte
         nbMagus = 0
         nbPrimus = 0
         # ----état général du culte, stratégie etc...
         culteSournois = 0 # à quel point la stratégie du culte tourne vers la sournoiserie/discrétion
         culteViolent = 0 # augmente si le culte déclenche beaucoup d'attentats meurtres etc...
-        enqueteArbites = False
-        enqueteInquisition = False
+        forceCulte = 0 # puissance de ce culte au niveau guerrier
+        puissancePolitiqueCulte = 0 # niveau d'infiltration du monde politique et industriel du culte => riende fait à ce sujet
+        puissancePolitiqueCulteMax = 100
         # ---- culte religieux
         culteCree = False # création du culte (au niveau religieux)
         nomCulte = ""
@@ -60,7 +61,8 @@ label start:
         nbCycleChasse = 0
         nbAnneesCulte = 0 # temps depuis quand le culte a été créé
         # donnees reperage
-        inquisiteurPresent = False
+        enqueteArbites = False
+        enqueteInquisition = False
 
         def CycleReperageCulte():
             global hybridesGen1, hybridesGen2, hybridesGen3, hybridesGen4, genovores, cultistes, contamines, nbAnneesCulte, niveauReperage, reperageMax, aberrations

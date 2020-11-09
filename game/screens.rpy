@@ -1594,7 +1594,7 @@ screen patriarche_genovore():
     tag interface_personnage
     frame:
         xpos 5 ypos 5
-        grid 2 7:
+        grid 2 8:
             xsize 210
             spacing 5
             text _("Cultistes : [cultistes]")
@@ -1611,7 +1611,10 @@ screen patriarche_genovore():
             null
             text _("Repéré ([niveauReperage]/[reperageMax])")
             bar:
-                value AnimatedValue(niveauReperage, 100, 1.0)
+                value AnimatedValue(niveauReperage, reperageMax, 1.0)
+            text("Infiltration politique ([puissancePolitiqueCulte]/[puissancePolitiqueCulteMax]")
+            bar:
+                value AnimatedValue(puissancePolitiqueCulte, puissancePolitiqueCulteMax, 1.0)
 
 screen invasion_planetaire():
     tag interface_personnage

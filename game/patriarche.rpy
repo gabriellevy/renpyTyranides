@@ -38,19 +38,28 @@ label choix_priorites_cycle:
             $ culteSournois += renpy.random.randint(1, 15)
             $ niveauReperage -= renpy.random.randint(1, 10)
             jump cycle_de_contamination
-        "Exterminer les témoins" if niveauReperage > 30 and genovores > 3:
-            jump exterminer_les_temoins
         "Essayer de contaminer le maximum d'humains":
             $ prioritePatrarche = prioritePatrarcheContamination
             jump cycle_de_contamination
         "Envoyer des éclaireurs dans les autres régions de la planète" if hybridesGen4 > 0:
             jump repandre_eclaireurs
+        # actions violentes :
         "Lancer la révolte planétaire" if nbPrimus > 0:
             jump revolte_genovore
+        "Exterminer les témoins" if niveauReperage > 30 and genovores > 3:
+            jump exterminer_les_temoins
+        # actions politiques :
+        "Infiltrer les hautes sphères de la société" if puissancePolitiqueCulte >= puissancePolitiqueCulteMax:
+            jump revolte_politique
+        "Prendre le contrôle de la planète politiquement" if nbMagus > 0 or quartier == 2:
+            jump infiltration_politique
 
-label revolte_genovore:
-    # ajouter des conditions en plus de la nécessité du primus ?
-    "Révolte : pas fait"
+label infiltration_politique:
+    "infiltration politique : pas écrite"
+    $ puissancePolitiqueCulte += renpy.random.randint(1, 10)
+    $ puissancePolitiqueCulte += nbMagus
+    $ niveauReperage += renpy.random.randint(0, 5)
+    jump cycle_de_contamination
 
 label repandre_eclaireurs:
     # TODO : ajouter une image de cultistes à moto ou autre véhicule ?
@@ -162,15 +171,22 @@ label phase_reperage:
     $ texteReperage = CycleReperageCulte()
     if texteReperage != "":
         pg "[texteReperage]"
+    jump enquete_culte
 
 label enquete_culte:
-    pg "pas fait : si suffisament repéré"
+    if enqueteArbites:
+        pg "!! L'Adeptus Arbites enquête : pas fait."
+    if enqueteInquisition:
+        pg "!! L'inquisiteur enquête : pas fait."
+        if niveauReperage > 100:
+            jump extermination_culte
+    jump temps_passe_culte
 
 label temps_passe_culte:
     $ nbAnneesCulte = nbAnneesCulte + 1
     jump debut_cycle
 
-# -----------------------------------------> à partir d'ici les événements exceptinnels qui ne sont pas partie du cycle :
+# -----------------------------------------> à partir d'ici les événements exceptionnels qui ne sont pas partie du cycle :
 label preparation_revolte:
     # capture de véhicules militaires et industriels
 
@@ -183,9 +199,14 @@ label celebration_culte:
     aco "Les choses enflées, difformes dans les conduits, ce ne sont pas des monstres. Ce sont des anges ! Ouvrez les yeux ! Ils ont été bénis et ont reçu la force des vrais vertueux."
     aco "Les inquiétudes vaines comme l’orgueil, la symétrie des traits, ne sont que pure perte de temps. Ne préférez-vous pas une apparence laide, mais assortie de la force et de la liberté, à la beauté, à la faiblesse et à l’asservissement à un régime indifférent ?"
 
-label revolte_culte:
+label revolte_genovore:
+    "révolte pas faite"
+    # ajouter des conditions en plus de la nécessité du primus ?
     # intervention Arbites ? cf intro https://omnis-bibliotheca.com/index.php/Cat%C3%A9gorie:Cultes_Genestealers
     # Intervention space marine ? (en tout cas si repérage élevé)
+
+label revolte_politique:
+    "révolte par la politique pas faite"
 
 
     pg "finalement appel de la flotte ruche"

@@ -227,10 +227,10 @@ label fin_cycle_de_chasse:
     if nbCycleChasse > 8 and contamines > 100:
             jump fin_chasse
     if niveauReperage > 50:
-        if inquisiteurPresent:
+        if enqueteArbites:
             "pas fait : trouvé et exécuté" # seulement 30% de chance
         else:
-            $ inquisiteurPresent = True # seulement 30% de chance
+            $ enqueteArbites = True # seulement 30% de chance
 
     jump cycle_de_chasse
 
